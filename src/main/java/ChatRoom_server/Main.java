@@ -1,13 +1,19 @@
 package ChatRoom_server;
 
-import org.json.JSONObject;
+import java.io.IOException;
+import java.net.ServerSocket;
 
 public class Main {
     public static void main(String[] args) {
-        JSONObject jo = new JSONObject();
-        jo.put("name", "jon doe");
-        jo.put("age", "22");
-        jo.put("city", "chicago");
-        System.out.println(jo);
+        try {
+            ServerSocket s = new ServerSocket(9911);
+            while (true){
+                s.accept();
+            }
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 }
