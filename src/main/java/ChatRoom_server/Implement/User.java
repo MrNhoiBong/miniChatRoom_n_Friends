@@ -5,11 +5,10 @@ import java.net.Socket;
 public class User {
     private String name;
     private String pw;
-    private Socket s;
 
-    public User(String name, Socket s) {
+    public User(String name, String pw) {
         this.name = name;
-        this.s = s;
+        this.pw = pw;
     }
 
     public String getName() {
@@ -26,13 +25,5 @@ public class User {
 
     public void setPw(String pw) {
         this.pw = pw;
-    }
-
-    public Socket getS() {
-        return s;
-    }
-
-    public void setS(Socket s) {
-        this.s = s;
     }
 }

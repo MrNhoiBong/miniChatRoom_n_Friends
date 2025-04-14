@@ -25,14 +25,35 @@ public class Subclient_imp extends SubClient {
 
             LoginCmd result_login = new LoginCmd();
             ChainCmd handle_loginCmd = new SplitCmd(result_login);
+            ChainCmd handle_registerCmd = new SplitCmd(new RegisterCmd());
 
-            while ((!result_login.isAccept())){
+            while(result_login.isAccept()){
                 String loginCmd = listenRq.readLine();
-                handle_loginCmd.Hanlde(loginCmd);
-                sendSmg.println("false");
-                sendSmg.flush();
-                System.out.println("Refuse login");
+                switch (requset.split(":")[0].toLowerCase()){
+                    case "login":
+                        handle_loginCmd.Hanlde(loginCmd);
+                        if (result_login.isAccept()){
+                            sendSmg.println("Welcome!!");
+                            sendSmg.flush();
+                            System.out.println("Accept login");
+                        }
+                        break;
+                    case "register":
+                        handle_registerCmd.Hanlde(loginCmd);
+                        break;
+                    default:
+                        System.out.println("Invaild command");
+                }
             }
+//            handle_loginCmd.Hanlde(loginCmd);
+//            while ((!result_login.isAccept())){
+//                sendSmg.println("false");
+//                sendSmg.flush();
+//                System.out.println("Refuse login");
+//
+//            }
+//            System.out.println("Accept login");
+
 
             while ((requset = listenRq.readLine()) != null){
                 switch (requset.split(":")[0].toLowerCase()){

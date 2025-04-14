@@ -3,13 +3,16 @@ package ChatRoom_server.Implement;
 import ChatRoom_server.Interface.Chatroom;
 import ChatRoom_server.Interface.DataBase;
 
+import java.net.Socket;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class txtDataBase extends DataBase {
     private static ArrayList<User> clients = new ArrayList<>();
     private static ArrayList<Chatroom> chatrooms = new ArrayList<>();
     private static ArrayList<String> hisCl = new ArrayList<>();
     private static ArrayList<String> hisCr = new ArrayList<>();
+    private static HashMap<User, Socket> User2Socket = new HashMap<>();
 
     public User Getuser(String name) {
         User target_user = null;
@@ -43,5 +46,21 @@ public class txtDataBase extends DataBase {
 
     public void Load() {
 
+    }
+
+    @Override
+    public Socket GetSocketfUser(String name) {
+        User user = Getuser(name);
+        if (user != null){
+            return User2Socket.get(user);
+        }
+        else {
+            return null;
+        }
+    }
+
+    @Override
+    public void AddUser2Socket(User user, Socket s) {
+        User2Socket.put(user, s);
     }
 }
