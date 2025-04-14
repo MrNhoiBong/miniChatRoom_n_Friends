@@ -19,7 +19,9 @@ public class LoginCmd implements ChainCmd {
     public LoginCmd(){}
     @Override
     public void Hanlde(Object request) {
-        this.request = new ArrayList<>(Arrays.asList(((String) request).split(":")));
+//        System.out.println(request);
+//        this.request = new ArrayList<>(Arrays.asList(((String) request).split(":")));
+        this.request = new ArrayList<>(Arrays.asList((String[]) request));
         String name = this.request.get(0);
         String pw = this.request.get(1);
         DataBase dataBase = new txtDataBase();

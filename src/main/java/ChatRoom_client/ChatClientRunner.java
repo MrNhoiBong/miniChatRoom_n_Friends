@@ -63,53 +63,8 @@ public class ChatClientRunner {
             if (input.equalsIgnoreCase("exit")) {
                 break;
             }
-
-            // Parse user input for commands
-//            if (input.startsWith("/msg")) {
-//                String[] parts = input.split(" ", 3);
-//                if (parts.length < 3) {
-//                    System.out.println("Usage: /msg <username> <message>");
-//                    continue;
-//                }
-//                String recipient = parts[1];
-//                String message = parts[2];
-//                System.out.println("Send:" + username + ":" + recipient + ":" + message);
-//                sender.sendCmd("Send:" + username + ":" + recipient + ":" + message);
-//            } else {
-//                // Default: broadcast message to all
-//                System.out.println("Send:" + username + ":ALL:" + input);
-//                sender.sendCmd("Send:" + username + ":ALL:" + input);
-//            }
-
-            if (!input.startsWith("send:") || input.split(":").length != 4) {
-                System.out.println("Invalid format. Please use 'send (joint):<your_username>:<recipient>:<message>'.");
-                continue;
-            }
-
-            String[] parts = input.split(":", 4);
-            String prefix = parts[0]; // "send"
-            String senderName = parts[1]; // Should match username
-            String recipient = parts[2]; // Recipient or "ALL"
-            String message = parts[3]; // Message content
-
-            // Validate sender matches the logged-in username
-            if (!senderName.equals(username)) {
-                System.out.println("Sender name must match your username: " + username + ". Please try again.");
-                continue;
-            }
-
-            // Validate recipient and message are not empty
-            if (recipient.isEmpty() || message.isEmpty()) {
-                System.out.println("Recipient and message cannot be empty. Please try again.");
-                continue;
-            }
-
-            // Display the message format before sending
-            System.out.println("Send:" + senderName + ":" + recipient + ":" + message);
-
-
             // Send the message to the server
-            sender.sendCmd("Send:" + senderName + ":" + recipient + ":" + message);
+            sender.sendCmd(input);
 
         }
 

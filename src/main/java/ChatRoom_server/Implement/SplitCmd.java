@@ -22,8 +22,7 @@ public class SplitCmd implements ChainCmd{
         String modifiedString = request.substring(colonIndex + 1);
 
         if (nextCmd == null){return;}
-        nextCmd.Hanlde(modifiedString);
-
+        nextCmd.Hanlde(modifiedString.split(":"));
     }
 
     @Override
