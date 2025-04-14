@@ -96,14 +96,12 @@ public class Login {
 
                     if (loginResponse == null) {
                         System.out.println("No response from server. Exiting...");
-                        scanner.close();
                         return false;
                     }
 
-                    if (loginResponse.equals("LOGIN_SUCCESS")) {
-                        System.out.println("The client has been registered");
-                        scanner.close();
-                        return true;
+                    if (loginResponse.equals("LOGIN_SUCCESS") || loginResponse.equals("true")) {
+                        System.out.println("Successfully logged in! The client has been registered");
+                        return true; // Exit the loop and method
                     } else if (loginResponse.equals("USER_EXISTS")) {
                         System.out.println("Username '" + userName + "' does not exist or password is incorrect. Please try again.");
                     } else {
@@ -118,21 +116,19 @@ public class Login {
 
                     if (registerResponse == null) {
                         System.out.println("No response from server. Exiting...");
-                        scanner.close();
                         return false;
                     }
 
-                    if (registerResponse.equals("REGISTER_SUCCESS")) {
-                        System.out.println("Register Successful! Now logging in...");
+                    if (registerResponse.equals("REGISTER_SUCCESS") || registerResponse.equals("true")) {
+                        System.out.println("Register Successfull! Now logging in...");
                         // Automatically attempt to login after successful registration
                         request = "LOGIN:" + userName + ":" + passWord;
                         sendLoginRequest(request);
                         String autoLoginResponse = receivedLoginResponse();
 
-                        if (autoLoginResponse != null && autoLoginResponse.equals("LOGIN_SUCCESS")) {
-                            System.out.println("The client has been registered");
-                            scanner.close();
-                            return true;
+                        if (autoLoginResponse != null && (autoLoginResponse.equals("LOGIN_SUCCESS") || autoLoginResponse.equals("true"))) {
+                            System.out.println("Successfully logged in! The client has been registered");
+                            return true; // Exit the loop and method
                         } else {
                             System.out.println("Auto-login failed after registration: " + autoLoginResponse + ". Please try logging in manually.");
                         }
