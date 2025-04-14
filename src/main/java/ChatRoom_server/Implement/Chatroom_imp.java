@@ -1,6 +1,7 @@
 package ChatRoom_server.Implement;
 
 import ChatRoom_server.Interface.Chatroom;
+import ChatRoom_server.Interface.DataBase;
 
 import java.io.IOException;
 import java.io.OutputStreamWriter;
@@ -18,8 +19,9 @@ public class Chatroom_imp implements Chatroom {
 
     @Override
     public void Send2Cr(User from_user, String msg) {
+        DataBase dataBase = new txtDataBase();
         for (User user: clients) {
-            Socket s = user.getS();
+            Socket s = dataBase.GetSocketfUser(user.getName());
             String from = from_user.getName();
             try {
                 if (user.getName().equals(from)){continue;}
