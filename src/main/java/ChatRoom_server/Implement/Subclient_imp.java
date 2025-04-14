@@ -26,7 +26,7 @@ public class Subclient_imp extends SubClient {
             LoginCmd result_login = new LoginCmd();
             ChainCmd handle_loginCmd = new SplitCmd(result_login);
 
-            while ((!result_login.isAccept())||(true)){
+            while ((!result_login.isAccept())){
                 String loginCmd = listenRq.readLine();
                 handle_loginCmd.Hanlde(loginCmd);
                 sendSmg.println("false");
