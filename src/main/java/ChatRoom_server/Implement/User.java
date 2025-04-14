@@ -1,11 +1,16 @@
-package ChatRoom_server.Interface;
+package ChatRoom_server.Implement;
 
 import java.net.Socket;
 
-public abstract class User {
+public class User {
     private String name;
     private String pw;
     private Socket s;
+
+    public User(String name, Socket s) {
+        this.name = name;
+        this.s = s;
+    }
 
     public String getName() {
         return name;

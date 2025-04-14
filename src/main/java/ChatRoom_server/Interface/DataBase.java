@@ -1,6 +1,6 @@
 package ChatRoom_server.Interface;
 
-import java.util.ArrayList;
+import ChatRoom_server.Implement.User;
 
 public interface DataBase {
     User Getuser(String name);

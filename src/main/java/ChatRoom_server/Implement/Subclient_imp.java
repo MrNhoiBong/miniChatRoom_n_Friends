@@ -7,9 +7,13 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.Socket;
 
-public class Subclient_imp implements SubClient {
+public class Subclient_imp extends SubClient {
     private String name;
     private Socket s;
+
+    public Subclient_imp(Socket s) {
+        this.s = s;
+    }
 
     @Override
     public void run() {

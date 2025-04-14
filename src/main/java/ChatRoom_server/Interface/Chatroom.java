@@ -1,8 +1,9 @@
 package ChatRoom_server.Interface;
 
-import java.net.Socket;
+import ChatRoom_server.Implement.User;
 
 public interface Chatroom {
-    void Send2Cr(String msg);
+    void Send2Cr(User user, String msg);
     void AddCl(User user);
+    String getName();
 }
