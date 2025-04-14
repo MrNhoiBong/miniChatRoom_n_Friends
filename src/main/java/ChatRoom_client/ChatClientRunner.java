@@ -46,9 +46,8 @@ public class ChatClientRunner {
                     }
                 }
             } catch (IOException e) {
-//                System.out.println("Error receiving message: " + e.getMessage());
-//                System.exit(1);
-                throw new RuntimeException(e);
+                System.out.println("Error receiving message: " + e.getMessage());
+                System.exit(1);
             }
         });
         receiverThread.start();
@@ -82,8 +81,8 @@ public class ChatClientRunner {
 //                sender.sendCmd("Send:" + username + ":ALL:" + input);
 //            }
 
-            if (!input.startsWith("Send:") || input.split(":").length != 4) {
-                System.out.println("Invalid format. Please use 'send:<your_username>:<recipient>:<message>'.");
+            if (!input.startsWith("send:") || input.split(":").length != 4) {
+                System.out.println("Invalid format. Please use 'send (joint):<your_username>:<recipient>:<message>'.");
                 continue;
             }
 
@@ -107,8 +106,11 @@ public class ChatClientRunner {
 
             // Display the message format before sending
             System.out.println("Send:" + senderName + ":" + recipient + ":" + message);
+
+
             // Send the message to the server
             sender.sendCmd("Send:" + senderName + ":" + recipient + ":" + message);
+
         }
 
         // Cleanup
