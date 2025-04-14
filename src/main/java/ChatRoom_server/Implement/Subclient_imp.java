@@ -49,7 +49,6 @@ public class Subclient_imp extends SubClient {
                     default:
                         System.out.print("Invaild command: ");
                         break;
-
                 }
             }
 
