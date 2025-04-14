@@ -101,7 +101,7 @@ public class Login {
                     }
 
                     if (loginResponse.equals("LOGIN_SUCCESS")) {
-                        System.out.println("Client đã được đăng ký");
+                        System.out.println("The client has been registered");
                         scanner.close();
                         return true;
                     } else if (loginResponse.equals("USER_EXISTS")) {
@@ -123,14 +123,14 @@ public class Login {
                     }
 
                     if (registerResponse.equals("REGISTER_SUCCESS")) {
-                        System.out.println("Đăng ký thành công! Now logging in...");
+                        System.out.println("Register Successful! Now logging in...");
                         // Automatically attempt to login after successful registration
                         request = "LOGIN:" + userName + ":" + passWord;
                         sendLoginRequest(request);
                         String autoLoginResponse = receivedLoginResponse();
 
                         if (autoLoginResponse != null && autoLoginResponse.equals("LOGIN_SUCCESS")) {
-                            System.out.println("Client đã được đăng ký");
+                            System.out.println("The client has been registered");
                             scanner.close();
                             return true;
                         } else {
