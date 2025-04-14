@@ -1,6 +1,7 @@
 package ChatRoom_server.Implement;
 
 import ChatRoom_server.Interface.ChainCmd;
+import ChatRoom_server.Interface.DataBase;
 import ChatRoom_server.Interface.SubClient;
 
 import java.io.*;
@@ -16,6 +17,7 @@ public class Subclient_imp extends SubClient {
 
     @Override
     public void run() {
+        DataBase dataBase = new txtDataBase();
         try {
             String requset = null;
             BufferedReader listenRq =
@@ -53,17 +55,29 @@ public class Subclient_imp extends SubClient {
                 }
             }
 
+            System.out.println(user.getName()+" login");
+
             while ((requset = listenRq.readLine()) != null){
+                System.out.println(requset);
                 switch (requset.split(":")[0].toLowerCase()){
+                    case "send":
+                        System.out.println("use send");
+                        break;
+                    case "jointcr":
+                        System.out.println("use join Chatroom");
+                        break;
+                    case "sendcr":
+                        System.out.println("use send chatroom");
+                        break;
                     case "logout":
-                        System.out.println("Logout cmd");
+                        System.out.println("use logout");
                         break;
                     default:
                         System.out.println("Invaild command");
                 }
             }
         } catch (IOException e) {
-            System.out.println(user.getName() + ": Logout");
+            System.out.println(user.getName() + " Logout");
         }
 
     }

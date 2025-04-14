@@ -7,7 +7,7 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class txtDataBase extends DataBase {
+public class txtDataBase implements DataBase {
     private static ArrayList<User> clients = new ArrayList<>();
     private static ArrayList<Chatroom> chatrooms = new ArrayList<>();
     private static ArrayList<String> hisCl = new ArrayList<>();
@@ -62,5 +62,10 @@ public class txtDataBase extends DataBase {
     @Override
     public void AddUser2Socket(User user, Socket s) {
         User2Socket.put(user, s);
+    }
+
+    @Override
+    public void RemoveUser2Socket(User user) {
+        User2Socket.remove(user);
     }
 }
