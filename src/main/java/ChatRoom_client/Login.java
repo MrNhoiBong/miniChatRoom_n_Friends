@@ -7,14 +7,12 @@ import java.net.Socket;
 import java.util.Scanner;
 
 
-public class Login  {
+public class Login {
     private String userName;
     private String passWord;
     private Socket s;
 
-    public Login (String userName, String passWord, Socket s) {
-        this.userName = userName;
-        this.passWord = passWord;
+    public Login(Socket s) {
         this.s = s;
     }
 
@@ -47,10 +45,10 @@ public class Login  {
     public void sendLoginRequest() {
         try {
             PrintWriter out = new PrintWriter(s.getOutputStream(), true);
-            out.println("Login:" + userName + ":" + passWord);
+            out.println("LOGIN:" + userName + ":" + passWord);
 
         } catch (Exception e) {
-            System.out.println("Error to sending login request" + e.getMessage());
+            System.out.println("Error to sending login request: " + e.getMessage());
         }
     }
 
@@ -60,7 +58,7 @@ public class Login  {
             BufferedReader in = new BufferedReader(new InputStreamReader(s.getInputStream()));
             return in.readLine();
         } catch (Exception e) {
-            System.out.println("Error receiving login response: " + e.getMessage());;
+            System.out.println("Error receiving login response: " + e.getMessage());
             return null;
         }
     }
@@ -68,32 +66,40 @@ public class Login  {
     // Perform login
     public boolean login() {
         Scanner scanner = new Scanner(System.in);
+
+        // Prompt for initial login credentials
+        System.out.println("--- Login ---");
+        System.out.print("Enter username: ");
+        this.userName = scanner.nextLine();
+        System.out.print("Enter password: ");
+        this.passWord = scanner.nextLine();
+
         while (true) {
             sendLoginRequest();
             String response = receivedLoginResponse();
 
             if (response == null) {
-                System.out.println("No response from the server. Exiting...");
+                System.out.println("No response from server. Exiting...");
                 scanner.close();
                 return false;
             }
 
             if (response.equals("LOGIN_SUCCESS")) {
-                System.out.println("Login successful!");
+                System.out.println("Login successful! Proceeding...");
                 scanner.close();
                 return true;
-            } else if (response.equals("USERS_EXISTS")) {
+            } else if (response.equals("USER_EXISTS")) {
                 System.out.println("Username '" + userName + "' already exists. Please try a different username.");
             } else {
-                System.out.println("Login failed: " + response + " . Please try again.");
+                System.out.println("Login failed: " + response + ". Please try again.");
             }
 
-            // Prompt for new credentials
+            // Prompt for new credentials if login fails
             System.out.print("Enter new username: ");
             this.userName = scanner.nextLine();
             System.out.print("Enter new password: ");
             this.passWord = scanner.nextLine();
         }
     }
-
 }
+
