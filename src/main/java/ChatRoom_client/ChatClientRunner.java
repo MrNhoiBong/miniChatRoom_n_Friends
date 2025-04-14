@@ -70,10 +70,12 @@ public class ChatClientRunner {
                 }
                 String recipient = parts[1];
                 String message = parts[2];
-                sender.sendCmd("Send:" + recipient + ":" + message);
+                System.out.println("Send:" + username + ":" + recipient + ":" + message);
+                sender.sendCmd("Send:" + username + ":" + recipient + ":" + message);
             } else {
                 // Default: broadcast message to all
-                sender.sendCmd("MSG:ALL:" + input);
+                System.out.println("Send:" + username + ":ALL:" + input);
+                sender.sendCmd("Send:" + username + ":ALL:" + input);
             }
         }
 
