@@ -16,7 +16,7 @@ public class Client {
     // Connect to server
     public boolean connect(String host, int port ) {
         try {
-            s = new Socket();
+            s = new Socket(host, port);
             System.out.println("Connected to server: " + host + ":" + port);
             return true;
         } catch (Exception e) {
