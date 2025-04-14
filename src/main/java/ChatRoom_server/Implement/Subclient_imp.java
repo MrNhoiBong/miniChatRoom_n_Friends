@@ -29,7 +29,7 @@ public class Subclient_imp extends SubClient {
 
             while(result_login.isAccept()){
                 String loginCmd = listenRq.readLine();
-                switch (requset.split(":")[0].toLowerCase()){
+                switch (loginCmd.split(":")[0].toLowerCase()){
                     case "login":
                         handle_loginCmd.Hanlde(loginCmd);
                         if (result_login.isAccept()){
@@ -37,12 +37,20 @@ public class Subclient_imp extends SubClient {
                             sendSmg.flush();
                             System.out.println("Accept login");
                         }
+                        else {
+                            sendSmg.println("false");
+                            sendSmg.flush();
+                        }
                         break;
                     case "register":
                         handle_registerCmd.Hanlde(loginCmd);
                         break;
                     default:
-                        System.out.println("Invaild command");
+                        System.out.print("Invaild command: ");
+                        System.out.println(loginCmd);
+                        System.out.println("kkk");
+                        break;
+
                 }
             }
 //            handle_loginCmd.Hanlde(loginCmd);
