@@ -63,7 +63,7 @@ public class Subclient_imp extends SubClient {
                     case "send":
                         System.out.println("use send");
                         break;
-                    case "jointcr":
+                    case "joincr":
                         System.out.println("use join Chatroom");
                         break;
                     case "sendcr":
