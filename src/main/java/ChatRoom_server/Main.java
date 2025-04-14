@@ -10,7 +10,6 @@ public class Main {
             while (true){
                 s.accept();
             }
-
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
