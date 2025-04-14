@@ -1,5 +1,6 @@
 package ChatRoom_server.Interface;
 
-public interface SubClient {
-    void run();
+public abstract class SubClient extends Thread{
+    @Override
+    public abstract void run();
 }
