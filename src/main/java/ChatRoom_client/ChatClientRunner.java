@@ -56,7 +56,7 @@ public class ChatClientRunner {
         // Handle user input and send commands in the main thread
         SendCommand sender = new SendCommand(client.getSocket());
 //        System.out.println("Enter messages to send (type 'exit' to quit, or '/msg <user> <message>' for direct messaging):");
-        System.out.println("Enter messages in the format 'send:<your_username>:<recipient>:<message>' (e.g., 'send:" + username + ":Long:Hello').");
+        System.out.println("Enter messages in the format 'Send:<your_username>:<recipient>:<message>' (e.g., 'send:" + username + ":Long:Hello').");
         System.out.println("Use 'send:" + username + ":ALL:<message>' to broadcast to all. Type 'exit' to quit.");
 
         while (true) {
