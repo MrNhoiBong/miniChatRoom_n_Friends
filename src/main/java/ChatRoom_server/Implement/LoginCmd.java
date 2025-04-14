@@ -10,6 +10,7 @@ public class LoginCmd implements ChainCmd {
     private ArrayList<String> request = new ArrayList<>();
     private ChainCmd nextCmd = null;
     private boolean accept = false;
+    private User user = null;
 
     public LoginCmd(ChainCmd nextCmd) {
         this.nextCmd = nextCmd;
@@ -26,6 +27,7 @@ public class LoginCmd implements ChainCmd {
         if ((user = dataBase.Getuser(name)) != null){
             if (user.getPw().equals(pw)){
                 accept = true;
+                this.user = user;
             }
         }
     }
@@ -37,5 +39,9 @@ public class LoginCmd implements ChainCmd {
 
     public boolean isAccept() {
         return accept;
+    }
+
+    public User getUser() {
+        return user;
     }
 }

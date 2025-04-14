@@ -7,7 +7,7 @@ import java.io.*;
 import java.net.Socket;
 
 public class Subclient_imp extends SubClient {
-    private String name;
+    private User user;
     private Socket s;
 
     public Subclient_imp(Socket s) {
@@ -35,6 +35,7 @@ public class Subclient_imp extends SubClient {
                         if (result_login.isAccept()){
                             sendSmg.println("true");
                             sendSmg.flush();
+                            user = result_login.getUser();
                         }
                         else {
                             sendSmg.println("false");
@@ -62,7 +63,7 @@ public class Subclient_imp extends SubClient {
                 }
             }
         } catch (IOException e) {
-            System.out.println(name + ": Logout");
+            System.out.println(user.getName() + ": Logout");
         }
 
     }
