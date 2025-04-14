@@ -56,7 +56,7 @@ public class Subclient_imp extends SubClient {
             while ((requset = listenRq.readLine()) != null){
                 switch (requset.split(":")[0].toLowerCase()){
                     case "logout":
-                        System.out.println("logout cmd");
+                        System.out.println("Logout cmd");
                         break;
                     default:
                         System.out.println("Invaild command");
