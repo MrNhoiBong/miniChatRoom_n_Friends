@@ -17,7 +17,7 @@ public class Client {
     public boolean connect(String host, int port ) {
         try {
             s = new Socket(host, port);
-            System.out.println("Connected to server: " + host + ":" + port);
+            System.out.println("Connected to server: " + host + ": " + port);
             return true;
         } catch (Exception e) {
             System.out.println("Connection failed: " + e.getMessage());

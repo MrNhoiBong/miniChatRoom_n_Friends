@@ -47,7 +47,7 @@ public class Login  {
     public void sendLoginRequest() {
         try {
             PrintWriter out = new PrintWriter(s.getOutputStream(), true);
-            out.println("Login: " + userName + "\n" + passWord);
+            out.println("Login:" + userName + ":" + passWord);
 
         } catch (Exception e) {
             System.out.println("Error to sending login request" + e.getMessage());
