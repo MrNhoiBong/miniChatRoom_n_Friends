@@ -23,6 +23,8 @@ public class Client {
             System.out.println("Connection failed: " + e.getMessage());
             return false;
         }
+
+        
     }
 
     // Setter and getters
