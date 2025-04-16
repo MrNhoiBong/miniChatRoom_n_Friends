@@ -1,7 +1,6 @@
 package ChatRoom_client;
 
 import java.io.*;
-import java.net.*;
 import java.util.Scanner;
 
 public class ChatClientRunner {
@@ -11,7 +10,7 @@ public class ChatClientRunner {
         while (true) {
             Client client = new Client("Client1");
 
-            String host = "localhost";
+            String host = "192.168.80.116";
             int port = 9911;
             if (!client.connect(host, port)) {
                 System.out.println("Failed to connect to the server. Exiting...");
