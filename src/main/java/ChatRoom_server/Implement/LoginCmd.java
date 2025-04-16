@@ -20,15 +20,14 @@ public class LoginCmd implements ChainCmd {
 
     @Override
     public void Hanlde(Object request) {
-//        System.out.println(request);
-//        this.request = new ArrayList<>(Arrays.asList(((String) request).split(":")));
         this.request = new ArrayList<>(Arrays.asList((String[]) request));
         String name = this.request.get(0);
         String pw = this.request.get(1);
         DataBase dataBase = new txtDataBase();
         User user = null;
         if ((user = dataBase.Getuser(name)) != null){
-            if (user.getPw().equals(pw)){
+            if (dataBase.GetSocketfUser(user) == null && user.getPw().equals(pw)){
+                System.out.println(dataBase.GetSocketfUser(user));
                 accept = true;
                 this.user = user;
                 dataBase.AddUser2Socket(user, s);

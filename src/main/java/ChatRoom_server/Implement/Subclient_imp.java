@@ -13,14 +13,13 @@ public class Subclient_imp extends SubClient {
 
     public Subclient_imp(Socket s) {
         this.s = s;
-        System.out.println(s);
     }
 
     @Override
     public void run() {
         DataBase dataBase = new txtDataBase();
         try {
-            String requset = null;
+            String request = null;
             BufferedReader listenRq =
                     new BufferedReader( new InputStreamReader(s.getInputStream()));
             PrintWriter sendSmg =
@@ -32,10 +31,10 @@ public class Subclient_imp extends SubClient {
             ChainCmd handle_registerCmd = new SplitCmd(result_register);
 
             while(!result_login.isAccept()){
-                requset = listenRq.readLine();
-                switch (requset.split(":")[0].toLowerCase()){
+                request = listenRq.readLine();
+                switch (request.split(":")[0].toLowerCase()){
                     case "login":
-                        handle_loginCmd.Hanlde(requset);
+                        handle_loginCmd.Hanlde(request);
                         if (result_login.isAccept()){
                             sendSmg.println("true");
                             sendSmg.flush();
@@ -47,7 +46,7 @@ public class Subclient_imp extends SubClient {
                         }
                         break;
                     case "register":
-                        handle_registerCmd.Hanlde(requset);
+                        handle_registerCmd.Hanlde(request);
                         if (result_register.isAccept()) {
                             sendSmg.println("true");
                         }
@@ -64,26 +63,29 @@ public class Subclient_imp extends SubClient {
 
             System.out.println(user.getName()+" login");
 
-            while ((requset = listenRq.readLine()) != null){
-                System.out.println(requset);
-                switch (requset.split(":")[0].toLowerCase()){
+            while ((request = listenRq.readLine()) != null){
+                switch (request.split(":")[0].toLowerCase()){
                     case "send":
-                        SendCmd sendCmd = new SendCmd();
-                        new SplitCmd(sendCmd).Hanlde(requset);
+                        SendCmd sendCmd = new SendCmd(user.getName());
+                        new SplitCmd(sendCmd).Hanlde(request);
                         sendSmg.println(sendCmd.getResult());
-                        System.out.println(sendCmd.getResult());
                         break;
+
                     case "joincr":
                         System.out.println("use join Chatroom");
                         break;
+
                     case "sendcr":
                         System.out.println("use send chatroom");
                         break;
+
                     case "logout":
                         System.out.println("use logout");
                         break;
+
                     default:
-                        System.out.println("Invaild command");
+                        sendSmg.println("Invaild command");
+                        sendSmg.flush();
                 }
             }
         } catch (IOException e) {

@@ -28,7 +28,6 @@ public class RegisterCmd implements ChainCmd {
         }
         User newUser = new User(name, pw);
         dataBase.Adduser(newUser);
-        dataBase.AddUser2Socket(newUser, s);
         Accept = true;
     }
 

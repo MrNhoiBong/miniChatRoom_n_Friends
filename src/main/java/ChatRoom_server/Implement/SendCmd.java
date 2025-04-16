@@ -6,19 +6,24 @@ import ChatRoom_server.Interface.DataBase;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.Arrays;
 
 public class SendCmd implements ChainCmd {
     private String[] parameter;
     private ChainCmd nextCmd;
     private String result;
+    private String sender;
+
+    public SendCmd(String sender) {
+        this.sender = sender;
+    }
 
     @Override
     public void Hanlde(Object request) {
         DataBase dataBase = new txtDataBase();
         parameter = (String[]) request;
-        String sender = parameter[0];
-        String receiver = parameter[1];
-        String message = parameter[2];
+        String receiver = parameter[0];
+        String message = String.join(":", Arrays.copyOfRange(parameter, 1, parameter.length));
 
         try {
             // Lấy đối tượng User từ receiver
@@ -40,7 +45,7 @@ public class SendCmd implements ChainCmd {
             // Gửi tin nhắn thông qua Socket
             PrintWriter sendSmg =
                     new PrintWriter( new OutputStreamWriter(socket.getOutputStream()));
-            sendSmg.println(message);
+            sendSmg.println(sender+ ":" +message);
             sendSmg.flush();
 
             result = "Tin nhắn đã gửi tới " + receiver + ": " + message;
