@@ -13,6 +13,7 @@ public class Subclient_imp extends SubClient {
 
     public Subclient_imp(Socket s) {
         this.s = s;
+        System.out.println(s);
     }
 
     @Override
@@ -25,9 +26,10 @@ public class Subclient_imp extends SubClient {
             PrintWriter sendSmg =
                     new PrintWriter( new OutputStreamWriter(s.getOutputStream()));
 
-            LoginCmd result_login = new LoginCmd();
+            LoginCmd result_login = new LoginCmd(s);
+            RegisterCmd result_register = new RegisterCmd(s);
             ChainCmd handle_loginCmd = new SplitCmd(result_login);
-            ChainCmd handle_registerCmd = new SplitCmd(new RegisterCmd());
+            ChainCmd handle_registerCmd = new SplitCmd(result_register);
 
             while(!result_login.isAccept()){
                 requset = listenRq.readLine();
@@ -46,7 +48,12 @@ public class Subclient_imp extends SubClient {
                         break;
                     case "register":
                         handle_registerCmd.Hanlde(requset);
-                        sendSmg.println("true");
+                        if (result_register.isAccept()) {
+                            sendSmg.println("true");
+                        }
+                        else {
+                            sendSmg.println("false");
+                        }
                         sendSmg.flush();
                         break;
                     default:
@@ -61,7 +68,10 @@ public class Subclient_imp extends SubClient {
                 System.out.println(requset);
                 switch (requset.split(":")[0].toLowerCase()){
                     case "send":
-                        System.out.println("use send");
+                        SendCmd sendCmd = new SendCmd();
+                        new SplitCmd(sendCmd).Hanlde(requset);
+                        sendSmg.println(sendCmd.getResult());
+                        System.out.println(sendCmd.getResult());
                         break;
                     case "joincr":
                         System.out.println("use join Chatroom");

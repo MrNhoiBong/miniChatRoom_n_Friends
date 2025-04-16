@@ -17,8 +17,10 @@ public class txtDataBase implements DataBase {
     public User Getuser(String name) {
         User target_user = null;
         for (User user: clients){
-            if (!name.equals(user.getName())){continue;}
-            target_user = user;
+            if (name.equals(user.getName())){
+                target_user = user;
+                break;
+            }
         }
         return target_user;
     }
@@ -51,6 +53,16 @@ public class txtDataBase implements DataBase {
     @Override
     public Socket GetSocketfUser(String name) {
         User user = Getuser(name);
+        if (user != null){
+            return User2Socket.get(user);
+        }
+        else {
+            return null;
+        }
+    }
+
+    @Override
+    public Socket GetSocketfUser(User user) {
         if (user != null){
             return User2Socket.get(user);
         }

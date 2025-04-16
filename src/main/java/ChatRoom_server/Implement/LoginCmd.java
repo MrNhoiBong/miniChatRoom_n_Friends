@@ -3,6 +3,7 @@ package ChatRoom_server.Implement;
 import ChatRoom_server.Interface.ChainCmd;
 import ChatRoom_server.Interface.DataBase;
 
+import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -11,12 +12,12 @@ public class LoginCmd implements ChainCmd {
     private ChainCmd nextCmd = null;
     private boolean accept = false;
     private User user = null;
+    private Socket s = null;
 
-    public LoginCmd(ChainCmd nextCmd) {
-        this.nextCmd = nextCmd;
+    public LoginCmd(Socket s) {
+        this.s = s;
     }
 
-    public LoginCmd(){}
     @Override
     public void Hanlde(Object request) {
 //        System.out.println(request);
@@ -30,6 +31,7 @@ public class LoginCmd implements ChainCmd {
             if (user.getPw().equals(pw)){
                 accept = true;
                 this.user = user;
+                dataBase.AddUser2Socket(user, s);
             }
         }
     }
