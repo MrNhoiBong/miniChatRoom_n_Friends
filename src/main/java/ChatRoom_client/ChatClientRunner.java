@@ -61,7 +61,7 @@ public class ChatClientRunner {
             System.out.println("Use 'send:" + username + ":ALL:<message>' to broadcast to all. Type 'logout' to quit.");
 
             while (true) {
-                String input = scanner.nextLine().toLowerCase();
+                String input = scanner.nextLine();
                 if (input.equalsIgnoreCase("logout")) {
                     try {
                         sender.sendCmd("logout");
