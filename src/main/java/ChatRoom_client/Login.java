@@ -12,6 +12,7 @@ public class Login {
     private String passWord;
     private Socket s;
 
+
     public Login(Socket s) {
         this.s = s;
     }
