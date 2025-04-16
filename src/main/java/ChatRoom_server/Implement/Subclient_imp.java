@@ -59,6 +59,7 @@ public class Subclient_imp extends SubClient {
                         System.out.print("Invaild command: ");
                         break;
                 }
+
             }
 
             System.out.println(user.getName()+" login");
@@ -66,6 +67,7 @@ public class Subclient_imp extends SubClient {
             while ((request = listenRq.readLine()) != null){
                 switch (request.split(":")[0].toLowerCase()){
                     case "send":
+                        System.out.println(request);
                         SendCmd sendCmd = new SendCmd(user.getName());
                         new SplitCmd(sendCmd).Hanlde(request);
                         sendSmg.println(sendCmd.getResult());
@@ -87,9 +89,11 @@ public class Subclient_imp extends SubClient {
                         sendSmg.println("Invaild command");
                         sendSmg.flush();
                 }
+
             }
         } catch (IOException e) {
             System.out.println(user.getName() + " Logout");
+            dataBase.RemoveUser2Socket(user);
         }
 
     }

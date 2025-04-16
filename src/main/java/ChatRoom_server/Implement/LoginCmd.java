@@ -27,7 +27,6 @@ public class LoginCmd implements ChainCmd {
         User user = null;
         if ((user = dataBase.Getuser(name)) != null){
             if (dataBase.GetSocketfUser(user) == null && user.getPw().equals(pw)){
-                System.out.println(dataBase.GetSocketfUser(user));
                 accept = true;
                 this.user = user;
                 dataBase.AddUser2Socket(user, s);
