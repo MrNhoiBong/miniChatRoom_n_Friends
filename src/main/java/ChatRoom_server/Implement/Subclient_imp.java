@@ -69,13 +69,14 @@ public class Subclient_imp extends SubClient {
                     case "send":
                         SendCmd sendCmd = new SendCmd(user.getName());
                         new SplitCmd(sendCmd).Hanlde(request);
+                        System.out.println(sendCmd.getResult());
                         sendSmg.println(sendCmd.getResult());
+                        sendSmg.flush();
                         break;
 
                     case "joincr":
                         JoincrCmd joincrCmd = new JoincrCmd(user.getName());
                         new SplitCmd(joincrCmd).Hanlde(request);
-                        System.out.println(joincrCmd.getResult());
                         sendSmg.println(joincrCmd.getResult());
                         sendSmg.flush();
                         break;
@@ -83,12 +84,7 @@ public class Subclient_imp extends SubClient {
                     case "sendcr":
                         SendcrCmd sendcrCmd = new SendcrCmd(user.getName());
                         new SplitCmd(sendcrCmd).Hanlde(request);
-                        if (sendcrCmd.isSuccess()){
-                            sendSmg.println("true");
-                        }
-                        else {
-                            sendSmg.println("no Success");
-                        }
+                        sendSmg.println(sendcrCmd.getResult());
                         sendSmg.flush();
                         break;
 

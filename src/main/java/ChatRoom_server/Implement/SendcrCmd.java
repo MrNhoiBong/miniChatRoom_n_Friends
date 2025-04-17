@@ -6,7 +6,7 @@ import ChatRoom_server.Interface.DataBase;
 
 public class SendcrCmd implements ChainCmd {
     private String[] parameter;
-    private boolean success = false;
+    private String result;
     private String sender;
 
     public SendcrCmd(String sender) {
@@ -21,14 +21,16 @@ public class SendcrCmd implements ChainCmd {
         DataBase dataBase = new txtDataBase();
 
         Chatroom chatroom = dataBase.GetCr(nameCr);
-        if (chatroom == null ){return;}
-        success = true;
+        if (chatroom == null ){
+            result = "Cant find chatroom";
+            return;
+        }
+        result = "success send";
         chatroom.Send2Cr(dataBase.Getuser(sender), mess);
-
     }
 
-    public boolean isSuccess() {
-        return success;
+    public String getResult() {
+        return result;
     }
 
     @Override

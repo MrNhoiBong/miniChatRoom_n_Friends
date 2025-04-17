@@ -23,7 +23,7 @@ public class SendCmd implements ChainCmd {
         DataBase dataBase = new txtDataBase();
         parameter = (String[]) request;
         String receiver = parameter[0];
-        String message = String.join(":", Arrays.copyOfRange(parameter, 1, parameter.length));
+        String message = String.join("", Arrays.copyOfRange(parameter, 1, parameter.length));
 
         try {
             // Lấy đối tượng User từ receiver
