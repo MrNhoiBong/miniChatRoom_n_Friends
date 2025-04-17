@@ -1,28 +1,27 @@
 package ChatRoom_client;
 
 import java.io.*;
-import java.util.Scanner;
+
 
 public class ChatClientRunner {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
-        while (true) {
+
             Client client = new Client("Client1");
 
-            String host = "192.168.80.116";
+//            String host = "192.168.80.116";
+            String host = "localhost";
             int port = 9911;
             if (!client.connect(host, port)) {
                 System.out.println("Failed to connect to the server. Exiting...");
-                scanner.close();
                 return;
             }
-
+        while (true) {
             // Login
             Login login = new Login(client.getSocket());
             if (!login.login()) {
                 System.out.println("Login failed after retries. Exiting...");
-                scanner.close();
                 return;
             }
             System.out.println("Login Successful!");
@@ -61,8 +60,15 @@ public class ChatClientRunner {
             System.out.println("Use 'send:" + username + ":ALL:<message>' to broadcast to all. Type 'logout' to quit.");
 
             while (true) {
-                String input = scanner.nextLine();
-                if (input.equalsIgnoreCase("logout")) {
+                String input;
+                try {
+                    input = reader.readLine(); // Đọc dòng đầu vào bằng BufferedReader
+                } catch (IOException e) {
+                    System.out.println("Error reading input: " + e.getMessage());
+                    break;
+                }
+
+                if (input != null && input.equalsIgnoreCase("logout")) {
                     try {
                         sender.sendCmd("logout");
                     } catch (Exception e) {
@@ -71,7 +77,7 @@ public class ChatClientRunner {
                     break;
                 }
 
-                if (input.isEmpty()) {
+                if (input == null || input.isEmpty()) {
                     System.out.println("Message cannot be empty. Please try again.");
                     continue;
                 }
