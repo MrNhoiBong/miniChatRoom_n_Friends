@@ -21,8 +21,13 @@ public class SendcrCmd implements ChainCmd {
         DataBase dataBase = new txtDataBase();
 
         Chatroom chatroom = dataBase.GetCr(nameCr);
-        if (chatroom == null ){
+        if (chatroom == null){
             result = "Cant find chatroom";
+            return;
+        }
+
+        if (!chatroom.checkUser(sender)){
+            result = "Ure not in chatroom";
             return;
         }
         result = "success send";

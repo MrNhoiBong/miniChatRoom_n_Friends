@@ -26,6 +26,7 @@ public class Chatroom_imp implements Chatroom {
             try {
                 if (user.getName().equals(from)){continue;}
                 PrintWriter send_msg = new PrintWriter( new OutputStreamWriter(s.getOutputStream()));
+                System.out.println(from +":"+name+":" + msg);
                 send_msg.println(from +":"+name+":" + msg);
                 send_msg.flush();
             } catch (IOException e) {
