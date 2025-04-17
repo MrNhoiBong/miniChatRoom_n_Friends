@@ -67,23 +67,35 @@ public class Subclient_imp extends SubClient {
             while ((request = listenRq.readLine()) != null){
                 switch (request.split(":")[0].toLowerCase()){
                     case "send":
-                        System.out.println(request);
                         SendCmd sendCmd = new SendCmd(user.getName());
                         new SplitCmd(sendCmd).Hanlde(request);
                         sendSmg.println(sendCmd.getResult());
                         break;
 
                     case "joincr":
-                        System.out.println("use join Chatroom");
+                        JoincrCmd joincrCmd = new JoincrCmd(user.getName());
+                        new SplitCmd(joincrCmd).Hanlde(request);
+                        System.out.println(joincrCmd.getResult());
+                        sendSmg.println(joincrCmd.getResult());
+                        sendSmg.flush();
                         break;
 
                     case "sendcr":
-                        System.out.println("use send chatroom");
+                        SendcrCmd sendcrCmd = new SendcrCmd(user.getName());
+                        new SplitCmd(sendcrCmd).Hanlde(request);
+                        if (sendcrCmd.isSuccess()){
+                            sendSmg.println("true");
+                        }
+                        else {
+                            sendSmg.println("no Success");
+                        }
+                        sendSmg.flush();
                         break;
 
                     case "logout":
-                        System.out.println("use logout");
-                        break;
+                        System.out.println(user.getName() + " Logout");
+                        dataBase.RemoveUser2Socket(user);
+                        return;
 
                     default:
                         sendSmg.println("Invaild command");
@@ -92,6 +104,7 @@ public class Subclient_imp extends SubClient {
 
             }
         } catch (IOException e) {
+            if (user == null){return;}
             System.out.println(user.getName() + " Logout");
             dataBase.RemoveUser2Socket(user);
         }

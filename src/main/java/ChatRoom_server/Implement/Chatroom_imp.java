@@ -21,12 +21,13 @@ public class Chatroom_imp implements Chatroom {
     public void Send2Cr(User from_user, String msg) {
         DataBase dataBase = new txtDataBase();
         for (User user: clients) {
-            Socket s = dataBase.GetSocketfUser(user.getName());
+            Socket s = dataBase.GetSocketfUser(user);
             String from = from_user.getName();
             try {
                 if (user.getName().equals(from)){continue;}
                 PrintWriter send_msg = new PrintWriter( new OutputStreamWriter(s.getOutputStream()));
-                send_msg.println(from + ": " + msg);
+                send_msg.println(from +":"+name+":" + msg);
+                send_msg.flush();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -41,5 +42,25 @@ public class Chatroom_imp implements Chatroom {
 
     public String getName() {
         return name;
+    }
+
+    @Override
+    public boolean checkUser(String name) {
+        for (User user:clients){
+            if (user.getName().equals(name)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public boolean checkUser(User sender) {
+        for (User user:clients){
+            if (user == sender){
+                return true;
+            }
+        }
+        return false;
     }
 }

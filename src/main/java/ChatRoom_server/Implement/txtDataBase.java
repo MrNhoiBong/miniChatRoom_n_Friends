@@ -10,10 +10,9 @@ import java.util.HashMap;
 public class txtDataBase implements DataBase {
     private static ArrayList<User> clients = new ArrayList<>();
     private static ArrayList<Chatroom> chatrooms = new ArrayList<>();
-    private static ArrayList<String> hisCl = new ArrayList<>();
-    private static ArrayList<String> hisCr = new ArrayList<>();
     private static HashMap<User, Socket> User2Socket = new HashMap<>();
 
+    @Override
     public User Getuser(String name) {
         User target_user = null;
         for (User user: clients){
@@ -25,6 +24,7 @@ public class txtDataBase implements DataBase {
         return target_user;
     }
 
+    @Override
     public Chatroom GetCr(String name) {
         Chatroom targetCr = null;
         for (Chatroom chatroom: chatrooms){
@@ -34,18 +34,27 @@ public class txtDataBase implements DataBase {
         return targetCr;
     }
 
+    @Override
     public void Adduser(User user) {
         clients.add(user);
     }
 
+    @Override
     public void AddCr(Chatroom chatroom) {
         chatrooms.add(chatroom);
     }
 
+    @Override
+    public void AddCr(String nameChatroom) {
+        chatrooms.add(new Chatroom_imp(nameChatroom));
+    }
+
+    @Override
     public void Save() {
 
     }
 
+    @Override
     public void Load() {
 
     }

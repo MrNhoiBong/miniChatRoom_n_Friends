@@ -9,6 +9,7 @@ public interface DataBase {
     public Chatroom GetCr(String name);
     public void Adduser(User user);
     public void AddCr(Chatroom chatroom);
+    public void AddCr(String nameChatroom);
     public void Save();
     public void Load();
     public Socket GetSocketfUser(String name);
