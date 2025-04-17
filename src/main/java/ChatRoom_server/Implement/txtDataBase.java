@@ -3,6 +3,7 @@ package ChatRoom_server.Implement;
 import ChatRoom_server.Interface.Chatroom;
 import ChatRoom_server.Interface.DataBase;
 
+import java.io.*;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -51,12 +52,31 @@ public class txtDataBase implements DataBase {
 
     @Override
     public void Save() {
-
+        String fileName = "data";
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
+            for (User user : clients) {
+                writer.write(user.getName() + ":" + user.getPw());
+                writer.newLine();
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
     public void Load() {
-
+        String fileName = "data";
+        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split(":");
+                if (parts.length == 2) {
+                    clients.add(new User(parts[0], parts[1]));
+                }
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
