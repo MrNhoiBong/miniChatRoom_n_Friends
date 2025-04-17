@@ -37,13 +37,12 @@ public class Subclient_imp extends SubClient {
                         handle_loginCmd.Hanlde(request);
                         if (result_login.isAccept()){
                             sendSmg.println("true");
-                            sendSmg.flush();
                             user = result_login.getUser();
                         }
                         else {
                             sendSmg.println("false");
-                            sendSmg.flush();
                         }
+                        sendSmg.flush();
                         break;
                     case "register":
                         handle_registerCmd.Hanlde(request);
