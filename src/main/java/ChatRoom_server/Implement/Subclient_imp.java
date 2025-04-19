@@ -9,6 +9,7 @@ import ChatRoom_server.Interface.SubClient;
 
 import java.io.*;
 import java.net.Socket;
+import java.util.Arrays;
 
 public class Subclient_imp extends SubClient {
     private User user;
@@ -96,6 +97,19 @@ public class Subclient_imp extends SubClient {
                         System.out.println(user.getName() + " Logout");
                         dataBase.RemoveUser2Socket(user);
                         return;
+
+                    case "alluser":
+                        GetAllUsCmd getAllUsCmd = new GetAllUsCmd();
+                        new SplitCmd(getAllUsCmd).Hanlde(request);
+                        sendSmg.println(Arrays.toString(getAllUsCmd.getResult()));
+                        sendSmg.flush();
+                        break;
+                    case "allcr":
+                        GetAllCrCmd getAllCrCmd = new GetAllCrCmd();
+                        new SplitCmd(getAllCrCmd).Hanlde(request);
+                        sendSmg.println(Arrays.toString(getAllCrCmd.getResult()));
+                        sendSmg.flush();
+                        break;
 
                     default:
                         sendSmg.println("Invaild command");

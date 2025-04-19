@@ -41,6 +41,5 @@ public class SendcrCmd implements ChainCmd {
 
     @Override
     public void setNext(ChainCmd chainCmd) {
-
     }
 }

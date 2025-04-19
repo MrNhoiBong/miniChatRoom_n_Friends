@@ -109,4 +109,18 @@ public class txtDataBase implements DataBase {
     public void RemoveUser2Socket(User user) {
         User2Socket.remove(user);
     }
+
+    @Override
+    public String[] GetAllUser() {
+        return clients.stream()
+                .map(User::getName)
+                .toArray(String[]::new);
+    }
+
+    @Override
+    public String[] GetAllCr() {
+        return chatrooms.stream()
+                .map(Chatroom::getName)
+                .toArray(String[]::new);
+    }
 }
