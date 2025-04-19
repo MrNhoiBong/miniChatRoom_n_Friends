@@ -1,6 +1,6 @@
 package ChatRoom_server.Interface;
 
-import ChatRoom_server.Implement.User;
+import ChatRoom_server.Implement.Database.User;
 
 import java.net.Socket;
 

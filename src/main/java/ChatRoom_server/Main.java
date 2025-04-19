@@ -1,7 +1,7 @@
 package ChatRoom_server;
 
 import ChatRoom_server.Implement.Subclient_imp;
-import ChatRoom_server.Implement.txtDataBase;
+import ChatRoom_server.Implement.Database.txtDataBase;
 import ChatRoom_server.Interface.DataBase;
 
 import java.io.BufferedReader;

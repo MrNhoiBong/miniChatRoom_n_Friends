@@ -1,4 +1,4 @@
-package ChatRoom_server.Implement;
+package ChatRoom_server.Implement.Database;
 
 import ChatRoom_server.Interface.Chatroom;
 import ChatRoom_server.Interface.DataBase;

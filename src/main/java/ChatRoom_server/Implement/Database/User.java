@@ -1,6 +1,4 @@
-package ChatRoom_server.Implement;
-
-import java.net.Socket;
+package ChatRoom_server.Implement.Database;
 
 public class User {
     private String name;

@@ -1,5 +1,8 @@
 package ChatRoom_server.Implement;
 
+import ChatRoom_server.Implement.Cmd_imp.*;
+import ChatRoom_server.Implement.Database.User;
+import ChatRoom_server.Implement.Database.txtDataBase;
 import ChatRoom_server.Interface.ChainCmd;
 import ChatRoom_server.Interface.DataBase;
 import ChatRoom_server.Interface.SubClient;
@@ -68,7 +71,7 @@ public class Subclient_imp extends SubClient {
                     case "send":
                         SendCmd sendCmd = new SendCmd(user.getName());
                         new SplitCmd(sendCmd).Hanlde(request);
-                        System.out.println(user.getName()+": "+sendCmd.getResult());
+//                        System.out.println(user.getName()+": "+sendCmd.getResult());
                         sendSmg.println(sendCmd.getResult());
                         sendSmg.flush();
                         break;
@@ -76,7 +79,7 @@ public class Subclient_imp extends SubClient {
                     case "joincr":
                         JoincrCmd joincrCmd = new JoincrCmd(user.getName());
                         new SplitCmd(joincrCmd).Hanlde(request);
-                        System.out.println(user.getName()+": "+joincrCmd.getResult());
+//                        System.out.println(user.getName()+": "+joincrCmd.getResult());
                         sendSmg.println(joincrCmd.getResult());
                         sendSmg.flush();
                         break;
@@ -84,7 +87,7 @@ public class Subclient_imp extends SubClient {
                     case "sendcr":
                         SendcrCmd sendcrCmd = new SendcrCmd(user.getName());
                         new SplitCmd(sendcrCmd).Hanlde(request);
-                        System.out.println(user.getName()+": "+sendcrCmd.getResult());
+//                        System.out.println(user.getName()+": "+sendcrCmd.getResult());
                         sendSmg.println(sendcrCmd.getResult());
                         sendSmg.flush();
                         break;

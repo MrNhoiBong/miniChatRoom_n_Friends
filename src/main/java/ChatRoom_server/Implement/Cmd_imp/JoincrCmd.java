@@ -1,9 +1,9 @@
-package ChatRoom_server.Implement;
+package ChatRoom_server.Implement.Cmd_imp;
 
+import ChatRoom_server.Implement.Database.User;
+import ChatRoom_server.Implement.Database.txtDataBase;
 import ChatRoom_server.Interface.ChainCmd;
 import ChatRoom_server.Interface.DataBase;
-
-import java.net.Socket;
 
 public class JoincrCmd implements ChainCmd {
     private String nameChatroom;

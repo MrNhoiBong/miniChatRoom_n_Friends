@@ -1,4 +1,4 @@
-package ChatRoom_server.Implement;
+package ChatRoom_server.Implement.Cmd_imp;
 
 import ChatRoom_server.Interface.ChainCmd;
 
