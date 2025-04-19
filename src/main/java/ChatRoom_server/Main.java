@@ -15,14 +15,17 @@ import java.net.UnknownHostException;
 public class Main {
     public static volatile ServerSocket server;
     public static void main(String[] args) {
+//        Load database
         DataBase dataBase = new txtDataBase();
         dataBase.Load();
 
+//        Show information
         ASCIIart();
 
+//        A thread wait to stop server
         Thread inputThread = new Thread(() -> {
             try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
-                System.out.println("Type exit for stop server");
+                System.out.println("Type \"exit\" for stop server");
                 while (true) {
                     String input = reader.readLine(); // Đọc dòng từ bàn phím
                     if ("exit".equalsIgnoreCase(input)) {
@@ -35,8 +38,6 @@ public class Main {
                 e.printStackTrace();
             }
         });
-
-        // Start thread
         inputThread.start();
 
         try {
@@ -47,7 +48,6 @@ public class Main {
             }
         } catch (IOException e) {
             dataBase.Save();
-            System.out.println("exception");
             System.exit(1);
         }
     }
@@ -67,7 +67,7 @@ public class Main {
             System.out.println("Port: 9911");
         } catch (UnknownHostException e) {
             // Xử lý ngoại lệ nếu không thể lấy địa chỉ IP
-            System.out.println("Không thể lấy địa chỉ IP.");
+            System.out.println("Cant get IP");
             System.exit(1);
         }
     }
