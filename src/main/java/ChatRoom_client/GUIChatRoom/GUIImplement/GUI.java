@@ -42,7 +42,7 @@ public class GUI  {
         transition.play();
         transition.setOnFinished((e) -> {
             try {
-                fxml = FXMLLoader.load(getClass().getResource(fxmlPath));
+                fxml = FXMLLoader.load(getClass().getClassLoader().getResource(fxmlPath));
                 vbox.getChildren().clear();
                 vbox.getChildren().setAll(fxml);
             } catch (IOException ex) {
