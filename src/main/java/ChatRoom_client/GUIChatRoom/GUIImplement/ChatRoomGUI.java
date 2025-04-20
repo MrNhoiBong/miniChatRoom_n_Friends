@@ -1,5 +1,6 @@
 package ChatRoom_client.GUIChatRoom.GUIImplement;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,15 +23,19 @@ public class ChatRoomGUI extends Application {
     public void start(Stage stage) {
         try {
             // Check resource link
-            String fxmlPath = "GUI.fxml";
-            java.net.URL fxmlUrl = getClass().getResource(fxmlPath);
-            if (fxmlUrl == null) {
-                LOGGER.log(Level.SEVERE, "FXML file not found: {0}", fxmlPath);
-                throw new IOException("Cannot find " + fxmlPath);
-            }
+//            String fxmlPath = "D:\\TTU\\2025_Spring\\CS206\\miniChatRoom_n_Friends\\src\\main\\java\\ChatRoom_client\\GUIChatRoom\\FXML\\GUI.fxml";
+//            java.net.URL fxmlUrl = getClass().getResource(fxmlPath);
+//            if (fxmlUrl == null) {
+//                LOGGER.log(Level.SEVERE, "FXML file not found: {0}", fxmlPath);
+//                throw new IOException("Cannot find " + fxmlPath);
+//            }
+//
+//            LOGGER.info("Loading FXML file: " + fxmlPath);
+//            Parent root = FXMLLoader.load(getClass().getResource("D:\\TTU\\2025_Spring\\CS206\\miniChatRoom_n_Friends\\src\\main\\java\\ChatRoom_client\\GUIChatRoom\\FXML\\GUI.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("GUI.fxml"));
 
-            LOGGER.info("Loading FXML file: " + fxmlPath);
-            Parent root = FXMLLoader.load(fxmlUrl);
+            System.out.println(getClass().getClassLoader().getResource("GUI.fxml"));
+            Parent root = loader.load();
 
             Scene scene = new Scene(root);
             scene.setFill(Color.TRANSPARENT);

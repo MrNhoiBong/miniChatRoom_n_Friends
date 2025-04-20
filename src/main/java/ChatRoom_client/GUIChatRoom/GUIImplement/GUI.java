@@ -18,7 +18,7 @@ public class GUI  {
     private static final Logger LOGGER = Logger.getLogger(GUI.class.getName());
 
     @FXML
-    private VBox vbox;
+    private VBox vbox = new VBox();
     private Parent fxml;
 
     @FXML
