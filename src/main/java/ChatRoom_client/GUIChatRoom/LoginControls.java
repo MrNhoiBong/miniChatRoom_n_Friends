@@ -1,14 +1,13 @@
 package ChatRoom_client.GUIChatRoom;
 
 import ChatRoom_client.ImplementClient.Login;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Button;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-
-import java.awt.event.ActionEvent;
 
 public class LoginControls {
     @FXML
@@ -20,4 +19,8 @@ public class LoginControls {
     @FXML
     private Button loginButton;
 
+    @FXML
+    private void Signin(ActionEvent event) {
+        System.out.println("Sign in");
+    }
 }

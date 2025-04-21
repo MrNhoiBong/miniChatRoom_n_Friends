@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: #151928;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: #151928;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ChatRoom_client.GUIChatRoom.LoginControls">
    <children>
       <Label text="Login" textFill="#2196f3">
          <VBox.margin>
@@ -38,7 +38,7 @@
             <Insets left="15.0" right="15.0" top="15.0" />
          </VBox.margin>
       </HBox>
-      <Button fx:id="loginButton" mnemonicParsing="false" prefHeight="0.0" prefWidth="467.0" style="-fx-background-color: #2198f3;" text="Log In" textFill="#ebebeb">
+      <Button fx:id="loginButton" mnemonicParsing="false" onAction="#Signin" prefHeight="0.0" prefWidth="467.0" style="-fx-background-color: #2198f3;" text="Log In" textFill="#ebebeb">
          <VBox.margin>
             <Insets left="15.0" right="15.0" top="25.0" />
          </VBox.margin>
