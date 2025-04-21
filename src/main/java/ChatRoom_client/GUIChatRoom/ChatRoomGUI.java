@@ -1,4 +1,4 @@
-package ChatRoom_client.GUIChatRoom.GUIImplement;
+package ChatRoom_client.GUIChatRoom;
 
 import java.io.IOException;
 import java.util.logging.Level;

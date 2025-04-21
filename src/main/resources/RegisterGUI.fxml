@@ -20,7 +20,7 @@
         </Label>
       <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="200.0">
          <children>
-            <TextField promptText="Email" style="-fx-background-color: transparent; -fx-border-color: #DEDEE4; -fx-border-width: 0px 0px 1px 0px;" HBox.hgrow="ALWAYS" />
+            <TextField promptText="Username" style="-fx-background-color: transparent; -fx-border-color: #DEDEE4; -fx-border-width: 0px 0px 1px 0px;" HBox.hgrow="ALWAYS" />
          </children>
          <VBox.margin>
             <Insets left="15.0" right="15.0" top="15.0" />
@@ -28,7 +28,7 @@
       </HBox>
         <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="200.0">
             <children>
-                <TextField promptText="Username" style="-fx-background-color: transparent; -fx-border-color: #DEDEE4; -fx-border-width: 0px 0px 1px 0px;" HBox.hgrow="ALWAYS" />
+                <TextField promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #DEDEE4; -fx-border-width: 0px 0px 1px 0px;" HBox.hgrow="ALWAYS" />
             </children>
             <VBox.margin>
                 <Insets left="15.0" right="15.0" top="15.0" />
@@ -36,7 +36,7 @@
         </HBox>
         <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="200.0">
             <children>
-                <TextField promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #DEDEE4; -fx-border-width: 0px 0px 1px 0px;" HBox.hgrow="ALWAYS">
+                <TextField promptText="Confirm Password" style="-fx-background-color: transparent; -fx-border-color: #DEDEE4; -fx-border-width: 0px 0px 1px 0px;" HBox.hgrow="ALWAYS">
                     <HBox.margin>
                         <Insets left="15.0" right="15.0" top="15.0" />
                     </HBox.margin>

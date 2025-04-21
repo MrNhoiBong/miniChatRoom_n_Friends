@@ -1,6 +1,5 @@
-package ChatRoom_client;
+package ChatRoom_client.ImplementClient;
 
-import java.io.*;
 import java.net.*;
 
 

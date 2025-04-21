@@ -1,5 +1,9 @@
 package ChatRoom_client;
 
+import ChatRoom_client.ImplementClient.Client;
+import ChatRoom_client.ImplementClient.Login;
+import ChatRoom_client.ImplementClient.SendCommand;
+
 import java.io.*;
 
 
@@ -82,45 +86,7 @@ public class ChatClientRunner {
                     continue;
                 }
                 sender.sendCmd(input);
-//            String recipient;
-//            String message;
 //
-//            // Kiểm tra xem có phải tin nhắn riêng (bắt đầu bằng @) không
-//            if (input.startsWith("@")) {
-//                // Tách recipient và message
-//                int firstSpace = input.indexOf(" ");
-//                if (firstSpace == -1 || firstSpace == input.length() - 1) {
-//                    System.out.println("Invalid format for direct message. Use '@<recipient> <message>'.");
-//                    continue;
-//                }
-//
-//                recipient = input.substring(1, firstSpace); // Lấy recipient (bỏ @)
-//                message = input.substring(firstSpace + 1).trim(); // Lấy message
-//
-//                if (recipient.isEmpty() || message.isEmpty()) {
-//                    System.out.println("Recipient and message cannot be empty. Use '@<recipient> <message>'.");
-//                    continue;
-//                }
-//            } else {
-//                // Tin nhắn phát sóng
-//                recipient = "All";
-//                message = input;
-//            }
-//
-//            // Hiển thị tin nhắn theo định dạng Send:<username>:<recipient>:<message>
-//            System.out.println("Send:" + username + ":" + recipient + ":" + message);
-//
-//            // Gửi tin nhắn đến server
-//            try {
-//                sender.sendCmd("send:" + recipient + ":" + message);
-//            } catch (Exception e) {
-//                System.out.println("Error sending message: " + e.getMessage());
-//                break;
-//            }
-//        }
-
-                // Cleanup
-//            scanner.close();
         }
             System.out.println("Logged out successfully. Returning to login screen...");
         }
