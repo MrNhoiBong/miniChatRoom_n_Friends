@@ -1,10 +1,11 @@
 package ChatRoom_client.GUIChatRoom;
 
+import ChatRoom_client.ImplementClient.Login;
 import java.io.IOException;
-
+import java.net.Socket;
+import java.util.Spliterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import javafx.animation.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -20,6 +21,17 @@ public class GUIControls {
     @FXML
     private VBox vbox;
     private Parent fxml;
+
+//    private final Login login;
+//
+//    public GUIControls() {
+//        try{
+//            Socket socket = new Socket("192.168.80.3", 9911);
+//            this.login = new Login(socket);
+//        } catch (IOException e) {
+//            throw new RuntimeException("Failed to connect to server: " + e.getMessage(), e);
+//        }
+//    }
 
     @FXML
     private void initialize() {
