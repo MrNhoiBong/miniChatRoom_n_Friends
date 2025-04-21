@@ -2,29 +2,34 @@ package ChatRoom_client.GUIChatRoom.GUIImplement;
 
 import java.io.IOException;
 
-import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.animation.TranslateTransition;
+
+import javafx.animation.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
 
-public class GUI  {
-    private static final Logger LOGGER = Logger.getLogger(GUI.class.getName());
+public class GUIControls {
+    private static final Logger LOGGER = Logger.getLogger(GUIControls.class.getName());
 
     @FXML
-    private VBox vbox = new VBox();
+    private VBox vbox;
     private Parent fxml;
 
     @FXML
     private void initialize() {
         loadFxml("Login.fxml", vbox.getLayoutX() * 20);
     }
+
 
     @FXML
     private void open_signin(ActionEvent event) {
