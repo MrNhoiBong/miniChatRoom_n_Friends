@@ -1,24 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
-
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1005.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <left>
-      <HBox prefHeight="700.0" prefWidth="283.0" BorderPane.alignment="CENTER">
+      <HBox prefHeight="700.0" prefWidth="355.0" BorderPane.alignment="CENTER">
          <children>
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="90.0" style="-fx-background-color: #46474B;">
+            <VBox alignment="CENTER" prefHeight="700.0" prefWidth="34.0" style="-fx-background-color: #46474B;">
                <children>
-                  <Pane prefHeight="234.0" prefWidth="90.0" />
+                  <Pane prefHeight="193.0" prefWidth="38.0" />
+                  <ImageView fitHeight="48.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                     <image>
+                        <Image url="@Icon/chat-icon.png" />
+                     </image>
+                  </ImageView>
                   <ImageView fitHeight="48.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@Icon/icons8-chat-50.png" />
+                        <Image url="@Icon/group-icon.png" />
                      </image>
                      <VBox.margin>
                         <Insets top="20.0" />
@@ -26,7 +38,7 @@
                   </ImageView>
                   <ImageView fitHeight="48.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@Icon/icons8-group-50%20(1).png" />
+                        <Image url="@Icon/user-icon.png" />
                      </image>
                      <VBox.margin>
                         <Insets top="20.0" />
@@ -34,15 +46,7 @@
                   </ImageView>
                   <ImageView fitHeight="48.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@Icon/icons8-user-50.png" />
-                     </image>
-                     <VBox.margin>
-                        <Insets top="20.0" />
-                     </VBox.margin>
-                  </ImageView>
-                  <ImageView fitHeight="48.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@Icon/icons8-setting-50.png" />
+                        <Image url="@Icon/setting-icon.png" />
                      </image>
                      <VBox.margin>
                         <Insets top="20.0" />
@@ -51,7 +55,7 @@
                   <Pane prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
                   <ImageView fitHeight="48.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@Icon/icons8-exit-50.png" />
+                        <Image url="@Icon/exit-icon.png" />
                      </image>
                      <VBox.margin>
                         <Insets bottom="30.0" />
@@ -59,7 +63,323 @@
                   </ImageView>
                </children>
             </VBox>
+            <VBox prefHeight="200.0" prefWidth="315.0" style="-fx-background-color: #636568;">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="34.0" prefWidth="255.0" style="-fx-background-color: #46474B; -fx-background-radius: 100px;">
+                     <children>
+                        <ImageView fitHeight="26.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Icon/search-icon.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </ImageView>
+                        <TextField prefHeight="25.0" prefWidth="199.0" promptText="Search" style="-fx-background-color: transparent;">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                        </TextField>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="20.0" left="30.0" right="30.0" top="20.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <Pane prefHeight="2.0" prefWidth="200.0" style="-fx-background-color: #46474B;" />
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="315.0">
+                     <children>
+                        <ImageView fitHeight="60.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Icon/account-icon.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <VBox alignment="CENTER_LEFT" prefHeight="77.0" prefWidth="218.0">
+                           <children>
+                              <Label prefHeight="17.0" prefWidth="204.0" text="Name" textFill="WHITE">
+                                 <font>
+                                    <Font name="Ebrima" size="19.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="17.0" prefWidth="204.0" text="Messenger" textFill="#9da7a7">
+                                 <font>
+                                    <Font name="Ebrima" size="18.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </VBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="315.0">
+                     <children>
+                        <ImageView fitHeight="60.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Icon/account-icon.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <VBox alignment="CENTER_LEFT" prefHeight="77.0" prefWidth="183.0">
+                           <children>
+                              <Label prefHeight="17.0" prefWidth="204.0" text="Name2" textFill="WHITE">
+                                 <font>
+                                    <Font name="Ebrima" size="19.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="17.0" prefWidth="204.0" text="Messenger" textFill="#9da7a7">
+                                 <font>
+                                    <Font name="Ebrima" size="18.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </VBox>
+                        <Pane prefHeight="77.0" prefWidth="58.0">
+                           <children>
+                              <Circle fill="#50c984" layoutX="28.0" layoutY="50.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                              <Label layoutX="23.0" layoutY="40.0" text="1" textFill="WHITE">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="315.0">
+                     <children>
+                        <ImageView fitHeight="60.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Icon/account-icon.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <VBox alignment="CENTER_LEFT" prefHeight="77.0" prefWidth="183.0">
+                           <children>
+                              <Label prefHeight="17.0" prefWidth="204.0" text="Name3" textFill="WHITE">
+                                 <font>
+                                    <Font name="Ebrima" size="19.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="17.0" prefWidth="204.0" text="Messenger" textFill="#9da7a7">
+                                 <font>
+                                    <Font name="Ebrima" size="18.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </VBox>
+                        <Pane prefHeight="77.0" prefWidth="58.0">
+                           <children>
+                              <Circle fill="#50c984" layoutX="28.0" layoutY="50.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                              <Label layoutX="23.0" layoutY="40.0" text="3" textFill="WHITE">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="315.0">
+                     <children>
+                        <ImageView fitHeight="60.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Icon/account-icon.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <VBox alignment="CENTER_LEFT" prefHeight="77.0" prefWidth="183.0">
+                           <children>
+                              <Label prefHeight="17.0" prefWidth="204.0" text="Name4" textFill="WHITE">
+                                 <font>
+                                    <Font name="Ebrima" size="19.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="17.0" prefWidth="204.0" text="Messenger" textFill="#9da7a7">
+                                 <font>
+                                    <Font name="Ebrima" size="18.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </VBox>
+                        <Pane prefHeight="77.0" prefWidth="58.0">
+                           <children>
+                              <Circle fill="#50c984" layoutX="28.0" layoutY="50.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                              <Label layoutX="23.0" layoutY="40.0" text="1" textFill="WHITE">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="315.0">
+                     <children>
+                        <ImageView fitHeight="60.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Icon/account-icon.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <VBox alignment="CENTER_LEFT" prefHeight="77.0" prefWidth="183.0">
+                           <children>
+                              <Label prefHeight="17.0" prefWidth="204.0" text="Name5" textFill="WHITE">
+                                 <font>
+                                    <Font name="Ebrima" size="19.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="17.0" prefWidth="204.0" text="Messenger" textFill="#9da7a7">
+                                 <font>
+                                    <Font name="Ebrima" size="18.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </VBox>
+                        <Pane prefHeight="77.0" prefWidth="58.0">
+                           <children>
+                              <Circle fill="#50c984" layoutX="28.0" layoutY="50.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                              <Label layoutX="23.0" layoutY="40.0" text="1" textFill="WHITE">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="315.0">
+                     <children>
+                        <ImageView fitHeight="60.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Icon/account-icon.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <VBox alignment="CENTER_LEFT" prefHeight="77.0" prefWidth="183.0">
+                           <children>
+                              <Label prefHeight="17.0" prefWidth="204.0" text="Name6" textFill="WHITE">
+                                 <font>
+                                    <Font name="Ebrima" size="19.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="17.0" prefWidth="204.0" text="Messenger" textFill="#9da7a7">
+                                 <font>
+                                    <Font name="Ebrima" size="18.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </VBox>
+                        <Pane prefHeight="77.0" prefWidth="58.0">
+                           <children>
+                              <Circle fill="#50c984" layoutX="28.0" layoutY="50.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                              <Label layoutX="23.0" layoutY="40.0" text="1" textFill="WHITE">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
          </children>
       </HBox>
    </left>
+   <center>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="82.0" prefWidth="200.0">
+               <children>
+                  <Label text="Name" textFill="#9da7a7">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Circle fill="#50c984" radius="4.0" stroke="BLACK" strokeType="INSIDE">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Circle>
+                  <Label text="Online" textFill="#9da7a7">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+            <ScrollPane prefHeight="556.0" prefWidth="650.0" style="-fx-background-color: transparent;">
+               <content>
+                  <Pane prefHeight="555.0" prefWidth="638.0" style="-fx-background-color: #DADADA;">
+                     <children>
+                        <ImageView fitHeight="41.0" fitWidth="45.0" layoutX="8.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Icon/account-icon.png" />
+                           </image>
+                        </ImageView>
+                        <Label alignment="CENTER" layoutX="59.0" layoutY="16.0" prefHeight="33.0" prefWidth="74.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 100px;" text="Messenger" />
+                        <ImageView fitHeight="41.0" fitWidth="45.0" layoutX="583.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Icon/account-icon.png" />
+                           </image>
+                        </ImageView>
+                        <Label alignment="CENTER" layoutX="498.0" layoutY="84.0" prefHeight="33.0" prefWidth="74.0" style="-fx-background-color: #50c984; -fx-background-radius: 100px;" text="Messenger" />
+                     </children>
+                  </Pane>
+               </content>
+            </ScrollPane>
+            <HBox alignment="CENTER" prefHeight="67.0" prefWidth="650.0">
+               <children>
+                  <TextField prefHeight="51.0" prefWidth="573.0" promptText="Type something" style="-fx-background-color: transparent;" />
+                  <ImageView fitHeight="41.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Icon/send-icon.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </center>
 </BorderPane>
