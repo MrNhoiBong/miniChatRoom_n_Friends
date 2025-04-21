@@ -13,7 +13,7 @@ import javafx.stage.StageStyle;
 
 public class ChatRoomGUI extends Application {
 
-//    private static final Logger LOGGER = Logger.getLogger(ChatRoomGUI.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(ChatRoomGUI.class.getName());
     public static void main(String[] args) {
         launch(args);
     }
@@ -21,22 +21,22 @@ public class ChatRoomGUI extends Application {
     @Override
     public void start(Stage stage) {
         try {
-//            FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI.fxml"));
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Chatting.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI.fxml"));
+//            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Chatting.fxml"));
 
-//            System.out.println(getClass().getResource("/GUI.fxml"));
+            System.out.println(getClass().getResource("/GUI.fxml"));
             Parent root = loader.load();
 
             Scene scene = new Scene(root);
-//            scene.setFill(Color.TRANSPARENT);
+            scene.setFill(Color.TRANSPARENT);
 //
             stage.setScene(scene);
-//            stage.initStyle(StageStyle.TRANSPARENT);
+            stage.initStyle(StageStyle.TRANSPARENT);
             stage.setTitle("Chat Room Application");
-//            LOGGER.info("Starting application with transparent stage");
+            LOGGER.info("Starting application with transparent stage");
             stage.show();
         } catch (IOException e) {
-//            LOGGER.log(Level.SEVERE, "Error loading application", e);
+            LOGGER.log(Level.SEVERE, "Error loading application", e);
             throw new RuntimeException("Failed to start application", e);
         }
     }
