@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: #151928;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: #151928;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ChatRoom_client.GUIChatRoom.RegisterControls">
     <children>
         <Label text="Register" textFill="#2196f3">
             <VBox.margin>
@@ -20,7 +20,7 @@
         </Label>
       <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="200.0">
          <children>
-            <TextField promptText="Username" style="-fx-background-color: transparent; -fx-border-color: #DEDEE4; -fx-border-width: 0px 0px 1px 0px;" HBox.hgrow="ALWAYS" />
+            <TextField fx:id="username" promptText="Username" style="-fx-background-color: transparent; -fx-border-color: #DEDEE4; -fx-border-width: 0px 0px 1px 0px; -fx-text-inner-color: white;" HBox.hgrow="ALWAYS" />
          </children>
          <VBox.margin>
             <Insets left="15.0" right="15.0" top="15.0" />
@@ -28,7 +28,7 @@
       </HBox>
         <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="200.0">
             <children>
-                <TextField promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #DEDEE4; -fx-border-width: 0px 0px 1px 0px;" HBox.hgrow="ALWAYS" />
+                <TextField fx:id="password" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #DEDEE4; -fx-border-width: 0px 0px 1px 0px; -fx-text-inner-color: white;" HBox.hgrow="ALWAYS" />
             </children>
             <VBox.margin>
                 <Insets left="15.0" right="15.0" top="15.0" />
@@ -36,14 +36,14 @@
         </HBox>
         <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="200.0">
             <children>
-                <TextField promptText="Confirm Password" style="-fx-background-color: transparent; -fx-border-color: #DEDEE4; -fx-border-width: 0px 0px 1px 0px;" HBox.hgrow="ALWAYS">
+                <TextField fx:id="confirmpw" promptText="Confirm Password" style="-fx-background-color: transparent; -fx-border-color: #DEDEE4; -fx-border-width: 0px 0px 1px 0px; -fx-text-inner-color: white;" HBox.hgrow="ALWAYS">
                     <HBox.margin>
                         <Insets left="15.0" right="15.0" top="15.0" />
                     </HBox.margin>
                 </TextField>
             </children>
         </HBox>
-      <Button mnemonicParsing="false" prefHeight="0.0" prefWidth="467.0" style="-fx-background-color: #2198f3;" text="Register" textFill="#ebebeb">
+      <Button fx:id="register" mnemonicParsing="false" onAction="#register_action" prefHeight="0.0" prefWidth="467.0" style="-fx-background-color: #2198f3;" text="Register" textFill="#ebebeb">
          <font>
             <Font size="17.0" />
          </font>
@@ -51,5 +51,16 @@
             <Insets left="15.0" right="15.0" top="20.0" />
          </VBox.margin>
       </Button>
+      <Label fx:id="fail_reg" textFill="RED">
+         <font>
+            <Font size="15.0" />
+         </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <padding>
+            <Insets left="15.0" top="25.0" />
+         </padding>
+      </Label>
     </children>
 </VBox>

@@ -20,7 +20,7 @@
       </Label>
       <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="200.0">
          <children>
-            <TextField fx:id="usernameField" promptText="Username" style="-fx-background-color: transparent; -fx-border-color: #DEDEE4; -fx-border-width: 0px 0px 1px 0px;" HBox.hgrow="ALWAYS" />
+            <TextField fx:id="usernameField" promptText="Username" style="-fx-background-color: transparent; -fx-border-color: #DEDEE4; -fx-border-width: 0px 0px 1px 0px; -fx-text-inner-color: white;" HBox.hgrow="ALWAYS" />
          </children>
          <VBox.margin>
             <Insets left="15.0" right="15.0" top="15.0" />
@@ -28,7 +28,7 @@
       </HBox>
       <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="200.0">
          <children>
-            <TextField fx:id="passwordField" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #DEDEE4; -fx-border-width: 0px 0px 1px 0px;" HBox.hgrow="ALWAYS">
+            <TextField fx:id="passwordField" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #DEDEE4; -fx-border-width: 0px 0px 1px 0px; -fx-text-inner-color: white;" HBox.hgrow="ALWAYS">
                <HBox.margin>
                   <Insets />
                </HBox.margin>
@@ -46,5 +46,13 @@
             <Font size="17.0" />
          </font>
       </Button>
+      <Label fx:id="fail_respone" textFill="#d70000">
+         <VBox.margin>
+            <Insets left="15.0" top="30.0" />
+         </VBox.margin>
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
    </children>
 </VBox>
