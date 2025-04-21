@@ -66,87 +66,92 @@ public class Login {
 
     // Perform login
     public boolean login() {
-        Scanner scanner = new Scanner(System.in);
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        try {
 
-        while (true) {
-            // Display menu for login/register
-            System.out.println("--- Welcome ---");
-            System.out.println("1. Login");
-            System.out.println("2. Register");
-            System.out.print("Choose an option (1 or 2): ");
-            String choice = scanner.nextLine().trim();
+            while (true) {
+                // Display menu for login/register
+                System.out.println("--- Welcome ---");
+                System.out.println("1. Login");
+                System.out.println("2. Register");
+                System.out.print("Choose an option (1 or 2): ");
+                String choice = reader.readLine().trim();
 
-            // Prompt for credentials
-            System.out.print("Enter username: ");
-            this.userName = scanner.nextLine().trim();
-            System.out.print("Enter password: ");
-            this.passWord = scanner.nextLine().trim();
+                // Prompt for credentials
+                System.out.print("Enter username: ");
+                this.userName = reader.readLine().trim();
+                System.out.print("Enter password: ");
+                this.passWord = reader.readLine().trim();
 
-            // Validate input
-            if (userName.isEmpty() || passWord.isEmpty()) {
-                System.out.println("Username and password cannot be empty. Please try again.");
-                continue;
-            }
+                // Validate input
+                if (userName.isEmpty() || passWord.isEmpty()) {
+                    System.out.println("Username and password cannot be empty. Please try again.");
+                    continue;
+                }
 
-            String request;
-            switch (choice) {
-                case "1": // Login
-                    request = "LOGIN:" + userName + ":" + passWord;
-                    sendLoginRequest(request);
-                    String loginResponse = receivedLoginResponse();
-
-                    if (loginResponse == null) {
-                        System.out.println("No response from server. Exiting...");
-                        return false;
-                    }
-
-                    if (loginResponse.equals("LOGIN_SUCCESS") || loginResponse.equals("true")) {
-                        System.out.println("Successfully logged in! The client has been registered");
-                        return true; // Exit the loop and method
-                    } else if (loginResponse.equals("USER_EXISTS")) {
-                        System.out.println("Username '" + userName + "' does not exist or password is incorrect. Please try again.");
-                    } else {
-                        System.out.println("Login failed: " + loginResponse + ". Please try again.");
-                    }
-                    break;
-
-                case "2": // Register
-                    request = "REGISTER:" + userName + ":" + passWord;
-                    sendLoginRequest(request);
-                    String registerResponse = receivedLoginResponse();
-
-                    if (registerResponse == null) {
-                        System.out.println("No response from server. Exiting...");
-                        return false;
-                    }
-
-                    if (registerResponse.equals("REGISTER_SUCCESS") || registerResponse.equals("true")) {
-                        System.out.println("Register Successfull! Now logging in...");
-                        // Automatically attempt to login after successful registration
+                String request;
+                switch (choice) {
+                    case "1": // Login
                         request = "LOGIN:" + userName + ":" + passWord;
                         sendLoginRequest(request);
-                        String autoLoginResponse = receivedLoginResponse();
+                        String loginResponse = receivedLoginResponse();
 
-                        if (autoLoginResponse != null && (autoLoginResponse.equals("LOGIN_SUCCESS") || autoLoginResponse.equals("true"))) {
+                        if (loginResponse == null) {
+                            System.out.println("No response from server. Exiting...");
+                            return false;
+                        }
+
+                        if (loginResponse.equals("LOGIN_SUCCESS") || loginResponse.equals("true")) {
                             System.out.println("Successfully logged in! The client has been registered");
                             return true; // Exit the loop and method
+                        } else if (loginResponse.equals("USER_EXISTS")) {
+                            System.out.println("Username '" + userName + "' does not exist or password is incorrect. Please try again.");
                         } else {
-                            System.out.println("Auto-login failed after registration: " + autoLoginResponse + ". Please try logging in manually.");
+                            System.out.println("Login failed: " + loginResponse + ". Please try again.");
                         }
-                    } else if (registerResponse.equals("USER_EXISTS")) {
-                        System.out.println("Username '" + userName + "' already exists. Please choose a different username.");
-                    } else {
-                        System.out.println("Registration failed: " + registerResponse + ". Please try again.");
-                    }
-                    break;
+                        break;
 
-                default:
-                    System.out.println("Invalid choice. Please enter 1 for Login or 2 for Register.");
-                    continue;
+                    case "2": // Register
+                        request = "REGISTER:" + userName + ":" + passWord;
+                        sendLoginRequest(request);
+                        String registerResponse = receivedLoginResponse();
+
+                        if (registerResponse == null) {
+                            System.out.println("No response from server. Exiting...");
+                            return false;
+                        }
+
+                        if (registerResponse.equals("REGISTER_SUCCESS") || registerResponse.equals("true")) {
+                            System.out.println("Register Successfull! Now logging in...");
+                            // Automatically attempt to login after successful registration
+                            request = "LOGIN:" + userName + ":" + passWord;
+                            sendLoginRequest(request);
+                            String autoLoginResponse = receivedLoginResponse();
+
+                            if (autoLoginResponse != null && (autoLoginResponse.equals("LOGIN_SUCCESS") || autoLoginResponse.equals("true"))) {
+                                System.out.println("Successfully logged in! The client has been registered");
+                                return true; // Exit the loop and method
+                            } else {
+                                System.out.println("Auto-login failed after registration: " + autoLoginResponse + ". Please try logging in manually.");
+                            }
+                        } else if (registerResponse.equals("USER_EXISTS")) {
+                            System.out.println("Username '" + userName + "' already exists. Please choose a different username.");
+                        } else {
+                            System.out.println("Registration failed: " + registerResponse + ". Please try again.");
+                        }
+                        break;
+
+                    default:
+                        System.out.println("Invalid choice. Please enter 1 for Login or 2 for Register.");
+                        continue;
+                }
+
+                // Prompt to try again if login/register fails
+                System.out.println("--- Try Again ---");
             }
-
-            // Prompt to try again if login/register fails
-            System.out.println("--- Try Again ---");
+        } catch (Exception e) {
+            System.out.println("Error reading input: " + e.getMessage());
+            return false;
         }
     }
 
