@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
 
@@ -11,12 +13,49 @@
    <left>
       <HBox prefHeight="700.0" prefWidth="283.0" BorderPane.alignment="CENTER">
          <children>
-            <VBox prefHeight="200.0" prefWidth="90.0">
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="90.0" style="-fx-background-color: #46474B;">
                <children>
+                  <Pane prefHeight="234.0" prefWidth="90.0" />
                   <ImageView fitHeight="48.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="&quot;C:\Users\Admin\IdeaProjects\miniChatRoom_n_Friends\src\Icon\icons8-chat-50.png&quot;" />
+                        <Image url="@Icon/icons8-chat-50.png" />
                      </image>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </ImageView>
+                  <ImageView fitHeight="48.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Icon/icons8-group-50%20(1).png" />
+                     </image>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </ImageView>
+                  <ImageView fitHeight="48.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Icon/icons8-user-50.png" />
+                     </image>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </ImageView>
+                  <ImageView fitHeight="48.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Icon/icons8-setting-50.png" />
+                     </image>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </ImageView>
+                  <Pane prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                  <ImageView fitHeight="48.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Icon/icons8-exit-50.png" />
+                     </image>
+                     <VBox.margin>
+                        <Insets bottom="30.0" />
+                     </VBox.margin>
                   </ImageView>
                </children>
             </VBox>
