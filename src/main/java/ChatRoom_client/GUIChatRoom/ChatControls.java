@@ -13,15 +13,14 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 
 
 public class ChatControls {
     @FXML
     private ImageView logoutButton;
     @FXML
-    private TextField searchField;
+    private Button refreshButton;
     @FXML
     private Label nameLabel;
     @FXML
@@ -37,7 +36,12 @@ public class ChatControls {
     }
 
     @FXML
-    private void mouseClickAction(MouseEvent event) {
+    private void mouseClickAction(MouseEvent event) throws IOException {
+        BufferedReader readMSG =
+                new BufferedReader( new InputStreamReader(RunGUI.socket.getInputStream()));
+        PrintWriter sendMSG =
+                new PrintWriter( new OutputStreamWriter(RunGUI.socket.getOutputStream()));
+
         logoutButton.setPickOnBounds(true);
         logoutButton.setOnMouseClicked((MouseEvent e) -> {
             try {
@@ -48,7 +52,6 @@ public class ChatControls {
             } catch (IOException ex) {
                 throw new RuntimeException("Failed to return Login");
             }
-
         });
 
     }

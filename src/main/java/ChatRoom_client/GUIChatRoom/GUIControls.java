@@ -42,7 +42,7 @@ public class GUIControls {
     @FXML
     private void open_signin(ActionEvent event) {
         loadFxml("Login.fxml", vbox.getLayoutX() * 20);
-        System.out.println("Open login");
+//        System.out.println("Open login");
     }
 
     @FXML
