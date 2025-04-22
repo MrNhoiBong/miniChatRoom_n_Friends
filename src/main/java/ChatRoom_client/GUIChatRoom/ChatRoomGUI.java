@@ -27,7 +27,7 @@ public class ChatRoomGUI extends Application {
             scene.setFill(Color.TRANSPARENT);
             stage.setScene(scene);
             prim_stage = stage;
-            stage.initStyle(StageStyle.TRANSPARENT);
+            stage.initStyle(StageStyle.DECORATED);
             stage.setTitle("Chat Room Application");
             stage.show();
         } catch (IOException e) {
