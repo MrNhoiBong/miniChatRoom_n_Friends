@@ -39,7 +39,7 @@ public class LoginControls {
         sendMSG.flush();
         String respone = readMSG.readLine();
         if (Boolean.parseBoolean(respone)){
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Chatting.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("Chatting.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root);
             ChatRoomGUI.prim_stage.setScene(scene);

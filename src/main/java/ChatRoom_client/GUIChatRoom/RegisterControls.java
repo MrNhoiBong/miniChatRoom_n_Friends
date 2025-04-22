@@ -40,8 +40,8 @@ public class RegisterControls {
         String registerRequest = "register:" + name + ":" + pw;
         sendMSG.println(registerRequest);
         sendMSG.flush();
-        String respone = readMSG.readLine();
-        if (Boolean.parseBoolean(respone)){
+        String response = readMSG.readLine();
+        if (Boolean.parseBoolean(response)){
             fail_reg.setText("Now you can login");
         }
         else {
