@@ -32,7 +32,7 @@ public class SendCmd implements ChainCmd {
             User user = dataBase.Getuser(receiver);
 
             if (user == null) {
-                result = "Người dùng không tồn tại: " + receiver;
+                result = "User does not exist " + receiver;
                 return;
             }
 
@@ -40,7 +40,7 @@ public class SendCmd implements ChainCmd {
             Socket socket = dataBase.GetSocketfUser(user);
 
             if (socket == null) {
-                result = "Không thể kết nối tới người dùng: " + receiver;
+                result = "Unable to connect to user " + receiver;
                 return;
             }
 
@@ -50,9 +50,9 @@ public class SendCmd implements ChainCmd {
             sendSmg.println(sender+ ":" +message);
             sendSmg.flush();
 
-            result = "Tin nhắn đã gửi tới " + receiver + ": " + message;
+            result = "Message sent to " + receiver + ": " + message;
         } catch (Exception e) {
-            result = "Lỗi khi gửi tin nhắn: " + e.getMessage();
+            result = "Error sending message " + e.getMessage();
         }
     }
 

@@ -40,14 +40,7 @@ public class ChatClientRunner {
                     String message;
                     while ((message = in.readLine()) != null) {
                         // Parse messages of the form "sender: message"
-                        if (message.contains(":")) {
-                            String[] parts = message.split(":", 2);
-                            String sender = parts[0];
-                            String content = parts[1];
-                            System.out.println(sender + ": " + content);
-                        } else {
-                            System.out.println("Received: " + message);
-                        }
+                        System.out.println("Received:" + message);
                     }
                     System.out.println("Server disconnected: Connection closed.");
                     System.exit(1);

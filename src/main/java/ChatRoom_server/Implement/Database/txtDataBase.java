@@ -112,7 +112,8 @@ public class txtDataBase implements DataBase {
 
     @Override
     public String[] GetAllUser() {
-        return clients.stream()
+        return User2Socket.keySet()
+                .stream()
                 .map(User::getName)
                 .toArray(String[]::new);
     }
