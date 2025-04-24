@@ -73,7 +73,13 @@ public class Container_mess_controller {
         mess_context.setMaxWidth(300);
 
         // Set the background color to gray using inline CSS
-        mess_context.setStyle("-fx-background-color: transparent; -fx-text-fill: white; -fx-padding: 10;");
+        mess_context.setStyle("-" +
+                "fx-background-color: #DCDCDC;" +
+                "-fx-background-radius: 30px;" +
+                "-fx-text-fill: white; " +
+                "-fx-padding: 10;" +
+                "-fx-text-fill: black;" +
+                "-fx-font-size: 22px;");
 
         int col = 0;
         int row = mess.getRowCount();
