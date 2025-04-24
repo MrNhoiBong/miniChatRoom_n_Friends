@@ -79,10 +79,10 @@ public class ChatControls {
                 sendMSG.println("logout");
                 sendMSG.flush();
 
-                RunGUI.listenThread.interrupt();
+//                RunGUI.listenThread.interrupt();
                 RunGUI.socket.close();
 
-                FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("GUI.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("GetIP.fxml"));
                 Parent root = loader.load();
                 Scene scene = new Scene(root);
                 ChatRoomGUI.prim_stage.setScene(scene);
