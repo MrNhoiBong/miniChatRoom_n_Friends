@@ -15,8 +15,15 @@ public class ChatClientRunner {
             Client client = new Client("Client1");
 
 //            String host = "192.168.80.116";
-            String host = "localhost";
-            int port = 9911;
+        BufferedReader input_keyboard = new BufferedReader(new InputStreamReader(System.in));
+        String host = null;
+        try {
+            host = input_keyboard.readLine();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        int port = 9911;
             if (!client.connect(host, port)) {
                 System.out.println("Failed to connect to the server. Exiting...");
                 return;
