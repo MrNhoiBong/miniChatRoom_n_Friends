@@ -47,6 +47,7 @@ public class LoginControls {
             RunGUI.name_user = name;
             RunGUI.listenThread = new listenerThread();
             RunGUI.listenThread.start();
+            ((ChatControls) loader.getController()).refresh_function(null);
         }
         else {
             fail_respone.setText("Incorrect user information or unregistered user details entered");

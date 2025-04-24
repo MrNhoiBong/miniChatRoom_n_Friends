@@ -48,12 +48,19 @@ public class ChatControls {
     private ImageView sendButton;
 
     @FXML
+    private Label nameSender;
+
+    @FXML
     void sendMess(MouseEvent event) {
         String mess = chatField.getText();
         if (!mess.equals("")){
             String current_chatter = Container_mess_controller.current_chat;
             Container_mess_controller chatWindow = Container_mess_controller.name2controller.get(current_chatter);
-            chatWindow.addMess(true, mess);
+            if (chatWindow == null){
+                chatField.setText("");
+                return;
+            }
+                chatWindow.addMess(true, mess);
 
             try {
                 PrintWriter sendMSG =
@@ -64,8 +71,8 @@ public class ChatControls {
                 throw new RuntimeException(e);
             }
 
+            chatField.setText("");
         }
-        chatField.setText("");
     }
 
     @FXML
@@ -115,6 +122,9 @@ public class ChatControls {
         users_string = "";
         new Container_mess_controller().setName_n_chat(users);
         listUser.getChildren().clear();
+        mess_place.getChildren().clear();
+        nameSender.setText("");
+        Container_mess_controller.current_chat = "";
         int row = 0;
         for (String user:users){
             Label name = new Label(user);
@@ -135,6 +145,7 @@ public class ChatControls {
                 mess_place.getChildren().clear();
                 mess_place.getChildren().add(name2chat.get(name.getText()));
                 Container_mess_controller.current_chat = name.getText();
+                nameSender.setText(name.getText());
             });
 
             if (!RunGUI.name_user.equals(name.getText())) {

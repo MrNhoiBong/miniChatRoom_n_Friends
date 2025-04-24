@@ -22,7 +22,7 @@
             <VBox alignment="CENTER" prefHeight="700.0" prefWidth="34.0" style="-fx-background-color: #46474B;">
                <children>
                   <Pane prefHeight="193.0" prefWidth="38.0" />
-                  <ImageView fitHeight="48.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="48.0" fitWidth="38.0" onMouseClicked="#refresh_function" pickOnBounds="true" preserveRatio="true">
                      <VBox.margin>
                         <Insets top="20.0" />
                      </VBox.margin>
@@ -77,7 +77,7 @@
          <children>
             <HBox alignment="CENTER" prefHeight="46.0" prefWidth="650.0">
                <children>
-                  <Label text="Name" textFill="#9da7a7">
+                  <Label fx:id="nameSender" text="Name" textFill="#9da7a7">
                      <HBox.margin>
                         <Insets left="20.0" />
                      </HBox.margin>
