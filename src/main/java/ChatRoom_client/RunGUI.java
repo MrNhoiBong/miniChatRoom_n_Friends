@@ -1,11 +1,9 @@
 package ChatRoom_client;
 
 import ChatRoom_client.GUIChatRoom.ChatRoomGUI;
-import ChatRoom_client.GUIChatRoom.GetIP_run;
 
-import java.io.IOException;
 import java.net.Socket;
-import java.util.ArrayList;
+
 
 public class RunGUI {
     public static Socket socket;
