@@ -1,6 +1,7 @@
 package ChatRoom_client.GUIChatRoom;
 
 import ChatRoom_client.RunGUI;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -43,6 +44,10 @@ public class LoginControls {
             Parent root = loader.load();
             Scene scene = new Scene(root);
             ChatRoomGUI.prim_stage.setScene(scene);
+            RunGUI.name_user = name;
+            RunGUI.listenThread = new listenerThread();
+            RunGUI.listenThread.start();
+            ((ChatControls) loader.getController()).refresh_function(null);
         }
         else {
             fail_respone.setText("Incorrect user information or unregistered user details entered");

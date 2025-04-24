@@ -1,11 +1,5 @@
 package ChatRoom_client.GUIChatRoom;
 
-import java.io.IOException;
-import java.net.Socket;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-import ChatRoom_client.RunGUI;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,22 +8,22 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-public class ChatRoomGUI extends Application {
-    static Stage prim_stage;
-//    private static final Logger LOGGER = Logger.getLogger(ChatRoomGUI.class.getName());
+import java.io.IOException;
+
+public class GetIP_run extends Application {
     public static void main(String[] args) {
         launch(args);
     }
 
     @Override
-    public void start(Stage stage) {
-        prim_stage = stage;
+    public void start(Stage stage) throws Exception {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/GetIP.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("GetIP.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.initStyle(StageStyle.DECORATED);
+            stage.setTitle("Chat Room Application");
             stage.show();
         } catch (IOException e) {
             throw new RuntimeException("Failed to start application", e);

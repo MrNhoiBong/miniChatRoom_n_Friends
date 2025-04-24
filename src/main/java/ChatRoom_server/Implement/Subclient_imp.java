@@ -101,13 +101,13 @@ public class Subclient_imp extends SubClient {
                     case "alluser":
                         GetAllUsCmd getAllUsCmd = new GetAllUsCmd();
                         new SplitCmd(getAllUsCmd).Hanlde(request);
-                        sendSmg.println(Arrays.toString(getAllUsCmd.getResult()));
+                        sendSmg.println("alluser:"+Arrays.toString(getAllUsCmd.getResult()));
                         sendSmg.flush();
                         break;
                     case "allcr":
                         GetAllCrCmd getAllCrCmd = new GetAllCrCmd();
                         new SplitCmd(getAllCrCmd).Hanlde(request);
-                        sendSmg.println(Arrays.toString(getAllCrCmd.getResult()));
+                        sendSmg.println("allcr:"+Arrays.toString(getAllCrCmd.getResult()));
                         sendSmg.flush();
                         break;
 

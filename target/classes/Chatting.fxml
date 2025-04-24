@@ -8,6 +8,8 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
@@ -20,7 +22,7 @@
             <VBox alignment="CENTER" prefHeight="700.0" prefWidth="34.0" style="-fx-background-color: #46474B;">
                <children>
                   <Pane prefHeight="193.0" prefWidth="38.0" />
-                  <ImageView fitHeight="48.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="48.0" fitWidth="38.0" onMouseClicked="#refresh_function" pickOnBounds="true" preserveRatio="true">
                      <VBox.margin>
                         <Insets top="20.0" />
                      </VBox.margin>
@@ -36,74 +38,33 @@
                         <Insets top="20.0" />
                      </VBox.margin>
                   </ImageView>
-                  <ImageView fitHeight="48.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@Icon/user-icon.png" />
-                     </image>
-                     <VBox.margin>
-                        <Insets top="20.0" />
-                     </VBox.margin>
-                  </ImageView>
-                  <ImageView fitHeight="48.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@Icon/setting-icon.png" />
-                     </image>
-                     <VBox.margin>
-                        <Insets top="20.0" />
-                     </VBox.margin>
-                  </ImageView>
-                  <Pane prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
-                  <ImageView fx:id="logoutButton" fitHeight="48.0" fitWidth="38.0" onMouseClicked="#mouseClickAction" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@Icon/exit-icon.png" />
-                     </image>
-                     <VBox.margin>
-                        <Insets bottom="30.0" />
-                     </VBox.margin>
-                  </ImageView>
+                  <Pane prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <ImageView fx:id="logoutButton" fitHeight="38.0" fitWidth="46.0" layoutX="-2.0" layoutY="203.0" onMouseClicked="#mouseClickAction" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Icon/exit-icon.png" />
+                           </image>
+                        </ImageView>
+                     </children></Pane>
                </children>
             </VBox>
             <VBox prefHeight="200.0" prefWidth="315.0" style="-fx-background-color: #636568;">
                <children>
-                  <HBox alignment="CENTER" prefHeight="34.0" prefWidth="218.0" style="-fx-background-color: #46474B; -fx-background-radius: 100px;">
+                  <HBox fx:id="refresh" alignment="CENTER" onMouseClicked="#refresh_function" prefHeight="34.0" prefWidth="218.0" style="-fx-background-color: #46474B; -fx-background-radius: 100px;">
                      <VBox.margin>
                         <Insets bottom="20.0" left="30.0" right="30.0" top="20.0" />
                      </VBox.margin>
                      <children>
-                        <Button fx:id="refreshButton" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Refresh" textFill="WHITE" />
+                        <Button fx:id="refreshButton" mnemonicParsing="false" onMouseClicked="#refresh_function" style="-fx-background-color: transparent;" text="Refresh" textFill="WHITE" />
                      </children>
                   </HBox>
-                  <Pane prefHeight="2.0" prefWidth="200.0" style="-fx-background-color: #46474B;" />
-                  <ScrollPane prefHeight="621.0" prefWidth="315.0" style="-fx-background-color: #636568;">
+                  <ScrollPane hbarPolicy="NEVER" prefHeight="626.0" prefWidth="315.0" vbarPolicy="NEVER">
                      <content>
-                        <Pane prefHeight="624.0" prefWidth="315.0" style="-fx-background-color: #636568;">
-                           <children>
-                              <HBox alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="299.0">
-                                 <children>
-                                    <ImageView fitHeight="60.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@Icon/account-icon.png" />
-                                       </image>
-                                       <HBox.margin>
-                                          <Insets left="10.0" />
-                                       </HBox.margin>
-                                    </ImageView>
-                                    <VBox alignment="CENTER_LEFT" prefHeight="52.0" prefWidth="180.0">
-                                       <children>
-                                          <Label fx:id="nameLabel" text="Name" textFill="WHITE">
-                                             <font>
-                                                <Font size="23.0" />
-                                             </font>
-                                             <VBox.margin>
-                                                <Insets left="10.0" />
-                                             </VBox.margin>
-                                          </Label>
-                                       </children>
-                                    </VBox>
-                                 </children>
-                              </HBox>
-                           </children>
-                        </Pane>
+                        <GridPane fx:id="listUser" prefHeight="0.0" prefWidth="315.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                        </GridPane>
                      </content>
                   </ScrollPane>
                </children>
@@ -114,9 +75,9 @@
    <center>
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <HBox alignment="CENTER_LEFT" prefHeight="82.0" prefWidth="200.0">
+            <HBox alignment="CENTER" prefHeight="46.0" prefWidth="650.0">
                <children>
-                  <Label text="Name" textFill="#9da7a7">
+                  <Label fx:id="nameSender" text="Name" textFill="#9da7a7">
                      <HBox.margin>
                         <Insets left="20.0" />
                      </HBox.margin>
@@ -126,30 +87,11 @@
                   </Label>
                </children>
             </HBox>
-            <ScrollPane prefHeight="556.0" prefWidth="650.0" style="-fx-background-color: transparent;">
-               <content>
-                  <Pane fx:id="chatContentPane" prefHeight="555.0" prefWidth="638.0" style="-fx-background-color: #DADADA;">
-                     <children>
-                        <ImageView fitHeight="41.0" fitWidth="45.0" layoutX="8.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@Icon/account-icon.png" />
-                           </image>
-                        </ImageView>
-                        <Label alignment="CENTER" layoutX="59.0" layoutY="16.0" prefHeight="33.0" prefWidth="74.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 100px;" text="Messenger" />
-                        <ImageView fitHeight="41.0" fitWidth="45.0" layoutX="583.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@Icon/account-icon.png" />
-                           </image>
-                        </ImageView>
-                        <Label alignment="CENTER" layoutX="498.0" layoutY="84.0" prefHeight="33.0" prefWidth="74.0" style="-fx-background-color: #50c984; -fx-background-radius: 100px;" text="Messenger" />
-                     </children>
-                  </Pane>
-               </content>
-            </ScrollPane>
+            <Pane fx:id="mess_place" prefHeight="600.0" prefWidth="650.0" />
             <HBox alignment="CENTER" prefHeight="67.0" prefWidth="650.0">
                <children>
-                  <TextField fx:id="chatfield" prefHeight="51.0" prefWidth="573.0" promptText="Type something" style="-fx-background-color: transparent;" />
-                  <ImageView fx:id="sendButton" fitHeight="41.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                  <TextField fx:id="chatField" prefHeight="78.0" prefWidth="574.0" promptText="Type something" style="-fx-background-color: transparent;" />
+                  <ImageView fx:id="sendButton" fitHeight="41.0" fitWidth="45.0" onMouseClicked="#sendMess" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@Icon/send-icon.png" />
                      </image>

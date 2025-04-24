@@ -47,7 +47,7 @@ public class SendCmd implements ChainCmd {
             // Gửi tin nhắn thông qua Socket
             PrintWriter sendSmg =
                     new PrintWriter( new OutputStreamWriter(socket.getOutputStream()));
-            sendSmg.println(sender+ ":" +message);
+            sendSmg.println("send:"+sender+ ":" +message);
             sendSmg.flush();
 
             result = "Message sent to " + receiver + ": " + message;
