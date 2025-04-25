@@ -66,6 +66,7 @@ public class Subclient_imp extends SubClient {
             }
 
             System.out.println(user.getName()+" login");
+            dataBase.Broadcast(user.getName(), "newLogin:"+user.getName());
 
             while ((request = listenRq.readLine()) != null){
                 switch (request.split(":")[0].toLowerCase()){
@@ -94,6 +95,7 @@ public class Subclient_imp extends SubClient {
                         break;
 
                     case "logout":
+                        dataBase.Broadcast(user.getName(), "newLogout:"+user.getName());
                         System.out.println(user.getName() + " Logout");
                         dataBase.RemoveUser2Socket(user);
                         return;
@@ -108,6 +110,12 @@ public class Subclient_imp extends SubClient {
                         GetAllCrCmd getAllCrCmd = new GetAllCrCmd();
                         new SplitCmd(getAllCrCmd).Hanlde(request);
                         sendSmg.println("allcr:"+Arrays.toString(getAllCrCmd.getResult()));
+                        sendSmg.flush();
+                        break;
+                    case "crjoined":
+                        CrjoinedCMD crjoinedCMD = new CrjoinedCMD(user);
+                        new SplitCmd(crjoinedCMD).Hanlde(request);
+                        sendSmg.println("crjoined:"+Arrays.toString(crjoinedCMD.getResult()));
                         sendSmg.flush();
                         break;
 

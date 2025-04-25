@@ -5,6 +5,8 @@ import ChatRoom_server.Implement.Database.txtDataBase;
 import ChatRoom_server.Interface.ChainCmd;
 import ChatRoom_server.Interface.DataBase;
 
+import java.util.Arrays;
+
 public class JoincrCmd implements ChainCmd {
     private String nameChatroom;
     private User user;
@@ -24,6 +26,10 @@ public class JoincrCmd implements ChainCmd {
         nameChatroom = ((String[]) request)[0];
         if (dataBase.GetCr(nameChatroom) == null){
             dataBase.AddCr(nameChatroom);
+            dataBase.Broadcast(
+                    user.getName(),
+                    "newchatroom:"+ Arrays.toString(dataBase.GetAllCr())
+        );
             result = "Create new chatroom";
         }
         else {

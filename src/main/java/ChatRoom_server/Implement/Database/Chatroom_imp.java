@@ -22,6 +22,7 @@ public class Chatroom_imp implements Chatroom {
         DataBase dataBase = new txtDataBase();
         for (User user: clients) {
             Socket s = dataBase.GetSocketfUser(user);
+            if (s == null){continue;}
             String from = from_user.getName();
             try {
                 if (user.getName().equals(from)){continue;}
@@ -39,7 +40,9 @@ public class Chatroom_imp implements Chatroom {
 
     @Override
     public void AddCl(User user) {
-        clients.add(user);
+        if (!checkUser(user)) {
+            clients.add(user);
+        }
     }
 
     public String getName() {

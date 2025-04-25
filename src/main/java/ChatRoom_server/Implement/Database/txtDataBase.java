@@ -7,6 +7,7 @@ import java.io.*;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 public class txtDataBase implements DataBase {
     private static ArrayList<User> clients = new ArrayList<>();
@@ -123,5 +124,35 @@ public class txtDataBase implements DataBase {
         return chatrooms.stream()
                 .map(Chatroom::getName)
                 .toArray(String[]::new);
+    }
+
+    @Override
+    public void Broadcast(String sender, String mess) {
+        for (Map.Entry<User, Socket> entry : User2Socket.entrySet()) {
+            User user = entry.getKey();
+            Socket socket = entry.getValue();
+
+            if (!sender.equals(user.getName())) {
+                try {
+                    PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+                    out.println(mess);
+                } catch (Exception e) {
+                    System.err.println("Lỗi khi gửi tin nhắn đến " + user.getName() + ": " + e.getMessage());
+                }
+            }
+        }
+    }
+
+    @Override
+    public String[] GetjoinedCr(String name) {
+        return GetjoinedCr(Getuser(name));
+    }
+
+    @Override
+    public String[] GetjoinedCr(User user) {
+        return chatrooms.stream()
+                .filter(chatroom -> chatroom.checkUser(user)) // Lọc những phòng có checkUser(user) == true
+                .map(Chatroom::getName) // Lấy tên phòng chat
+                .toArray(String[]::new); // Chuyển danh sách thành mảng String[]
     }
 }

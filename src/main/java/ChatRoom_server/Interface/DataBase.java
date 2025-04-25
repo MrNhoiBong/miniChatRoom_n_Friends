@@ -18,4 +18,7 @@ public interface DataBase {
     public void RemoveUser2Socket(User user);
     public String[] GetAllUser();
     public String[] GetAllCr();
+    public void Broadcast(String sender, String mess);
+    public String[] GetjoinedCr(String name);
+    public String[] GetjoinedCr(User user);
 }

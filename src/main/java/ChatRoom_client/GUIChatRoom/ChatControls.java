@@ -17,6 +17,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import javafx.stage.Stage;
 
 import java.io.*;
 import java.net.Socket;
@@ -25,6 +26,10 @@ import java.util.HashMap;
 
 public class ChatControls {
     public static volatile String users_string = "";
+    String nameuser;
+
+    @FXML
+    private Button nameUser;
 
     @FXML
     private TextField chatField;
@@ -37,12 +42,6 @@ public class ChatControls {
 
     @FXML
     private Pane mess_place;
-
-    @FXML
-    private HBox refresh;
-
-    @FXML
-    private Button refreshButton;
 
     @FXML
     private ImageView sendButton;
@@ -88,6 +87,7 @@ public class ChatControls {
 
 //                RunGUI.listenThread.interrupt();
                 RunGUI.socket.close();
+                Container_mess_controller.name2controller = new HashMap<>();
 
                 FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("GetIP.fxml"));
                 Parent root = loader.load();
@@ -179,5 +179,37 @@ public class ChatControls {
         }
 
         return elements;
+    }
+
+    public void setUsername(String name){
+        nameuser = name;
+        nameUser.setText(name);
+    }
+
+    @FXML
+    void chatroomSwitch_function(MouseEvent event) {
+        if (ChatroomWindow_control.exists){return;}
+
+        Stage chatWindow = new Stage();
+        FXMLLoader loader = new FXMLLoader(
+                getClass().getClassLoader().getResource("ChatroomWindow.fxml")
+        );
+        try {
+            System.out.println(getClass().getClassLoader().getResource("ChatroomWindow.fxml"));
+            Parent root = loader.load();
+
+            ChatroomWindow_control CRcontrol = loader.getController();
+            CRcontrol.setData(nameuser, loader, chatWindow);
+
+            Scene scene = new Scene(root);
+            chatWindow.setScene(scene);
+            chatWindow.setOnCloseRequest(e -> {
+                ChatroomWindow_control.exists = false;
+            });
+            chatWindow.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 }
