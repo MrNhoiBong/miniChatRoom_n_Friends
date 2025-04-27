@@ -11,6 +11,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -48,6 +50,12 @@ public class ChatControls {
 
     @FXML
     private Label nameSender;
+
+    @FXML
+    void getmess(KeyEvent event) {
+        if (event.getCode() != KeyCode.ENTER){return;}
+        sendMess(null);
+    }
 
     @FXML
     void sendMess(MouseEvent event) {
@@ -93,6 +101,7 @@ public class ChatControls {
                 Parent root = loader.load();
                 Scene scene = new Scene(root);
                 ChatRoomGUI.prim_stage.setScene(scene);
+                ChatRoomGUI.prim_stage.setOnCloseRequest(_ -> {});
 
             } catch (IOException ex) {
                 throw new RuntimeException("Failed to return Login");
