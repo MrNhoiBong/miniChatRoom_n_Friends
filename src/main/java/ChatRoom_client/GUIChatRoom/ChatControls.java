@@ -52,35 +52,36 @@ public class ChatControls {
 
     @FXML
     void getmess(KeyEvent event) {
-        if (event.getCode() != KeyCode.ENTER){return;}
-        sendMess(null);
+        if (event.getCode() == KeyCode.ENTER) {
+            this.sendMess((MouseEvent)null);
+        }
     }
 
     @FXML
     void sendMess(MouseEvent event) {
-        String mess = chatField.getText();
-        if (!mess.equals("")){
+        String mess = this.chatField.getText();
+        if (!mess.equals("")) {
             String current_chatter = Container_mess_controller.current_chat;
-            Container_mess_controller chatWindow = Container_mess_controller.name2controller.get(current_chatter);
-            if (chatWindow == null){
-                chatField.setText("");
+            Container_mess_controller chatWindow = (Container_mess_controller)Container_mess_controller.name2controller.get(current_chatter);
+            if (chatWindow == null) {
+                this.chatField.setText("");
                 return;
             }
-                chatWindow.addMess(true, mess);
+
+            chatWindow.addMess(true, mess);
 
             try {
-                PrintWriter sendMSG =
-                        new PrintWriter(new OutputStreamWriter(RunGUI.socket.getOutputStream()));
-                sendMSG.println("send:"+current_chatter+":"+mess);
+                PrintWriter sendMSG = new PrintWriter(new OutputStreamWriter(RunGUI.socket.getOutputStream()));
+                sendMSG.println("send:" + current_chatter + ":" + mess);
                 sendMSG.flush();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
 
-            chatField.setText("");
+            this.chatField.setText("");
         }
-    }
 
+    }
     @FXML
     private void mouseClickAction(MouseEvent event) throws IOException {
         PrintWriter sendMSG =
