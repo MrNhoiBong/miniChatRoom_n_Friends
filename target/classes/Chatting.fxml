@@ -90,7 +90,7 @@
             <Pane fx:id="mess_place" prefHeight="623.0" prefWidth="650.0" />
             <HBox alignment="CENTER" prefHeight="67.0" prefWidth="650.0">
                <children>
-                  <TextField fx:id="chatField" prefHeight="39.0" prefWidth="575.0" promptText="Type something" style="-fx-background-radius: 50px;" />
+                  <TextField fx:id="chatField" onKeyReleased="#getmess" prefHeight="39.0" prefWidth="575.0" promptText="Type something" style="-fx-background-radius: 50px;" />
                   <ImageView fx:id="sendButton" fitHeight="41.0" fitWidth="45.0" onMouseClicked="#sendMess" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@Icon/send-icon.png" />
