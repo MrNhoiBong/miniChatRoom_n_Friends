@@ -74,7 +74,7 @@ public class Container_mess_controller {
 
         // Set the background color to gray using inline CSS
         mess_context.setStyle("-" +
-                "fx-background-color: #DCDCDC;" +
+                "fx-background-color: #FFB6C1;" +
                 "-fx-background-radius: 30px;" +
                 "-fx-text-fill: white; " +
                 "-fx-padding: 10;" +

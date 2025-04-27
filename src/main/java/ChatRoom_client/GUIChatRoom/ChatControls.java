@@ -13,7 +13,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -102,7 +101,7 @@ public class ChatControls {
     }
 
     @FXML
-    void refresh_function(MouseEvent event) {
+    public void refresh_function(MouseEvent event) {
         Socket s = RunGUI.socket;
         BufferedReader readSMG;
         PrintWriter sendSMG;

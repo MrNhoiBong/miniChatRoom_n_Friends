@@ -9,7 +9,6 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="564.0" prefWidth="770.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ChatRoom_client.GUIChatRoom.ChatroomWindow_control">
    <children>
       <ScrollPane hbarPolicy="NEVER" layoutX="14.0" layoutY="55.0" prefHeight="164.0" prefWidth="191.0" vbarPolicy="NEVER">
@@ -21,9 +20,9 @@
             </GridPane>
          </content>
       </ScrollPane>
-      <TextField fx:id="messengerGet" layoutX="213.0" layoutY="499.0" onKeyReleased="#sendText" prefHeight="51.0" prefWidth="546.0" promptText="Type mess" />
+      <TextField fx:id="messengerGet" layoutX="213.0" layoutY="499.0" onKeyReleased="#sendText" prefHeight="51.0" prefWidth="546.0" promptText="Type mess" style="-fx-background-radius: 20px;" />
       <Pane fx:id="messengerContain" layoutX="213.0" layoutY="55.0" prefHeight="438.0" prefWidth="546.0" style="-fx-background-color: gray;" />
-      <Label fx:id="nameCurrentRoom" alignment="CENTER" layoutX="213.0" layoutY="9.0" prefHeight="35.0" prefWidth="546.0" style="-fx-background-color: black;" textFill="WHITE">
+      <Label fx:id="nameCurrentRoom" alignment="CENTER" layoutX="213.0" layoutY="9.0" prefHeight="35.0" prefWidth="546.0" style="-fx-background-color: #46474B;" textFill="WHITE">
          <font>
             <Font size="15.0" />
          </font>

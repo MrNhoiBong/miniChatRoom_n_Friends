@@ -1,9 +1,6 @@
 package ChatRoom_client.GUIChatRoom;
 
-import ChatRoom_client.ImplementClient.Login;
 import java.io.IOException;
-import java.net.Socket;
-import java.util.Spliterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.animation.*;

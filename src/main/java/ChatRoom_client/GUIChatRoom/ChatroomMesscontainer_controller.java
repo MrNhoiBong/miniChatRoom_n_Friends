@@ -2,6 +2,7 @@ package ChatRoom_client.GUIChatRoom;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -35,11 +36,11 @@ public class ChatroomMesscontainer_controller {
         mess_context.setMaxWidth(300);
 
         // Set the background color to gray using inline CSS
-        mess_context.setStyle("-" +
-                "fx-background-color: #DCDCDC;" +
-                "-fx-background-radius: 30px;" +
+        mess_context.setStyle(
+                "-fx-background-color: #00FFFF;" +
+                "-fx-background-radius: 20px;" +
                 "-fx-text-fill: white; " +
-                "-fx-padding: 10;" +
+                "-fx-padding: 10px;" +
                 "-fx-text-fill: black;" +
                 "-fx-font-size: 22px;");
 
@@ -51,6 +52,7 @@ public class ChatroomMesscontainer_controller {
         }
         mess_context.setText(messText);
         messContainCR.add(mess_context, col, row);
+        GridPane.setMargin(mess_context, new Insets(5, 0, 5, 0));
         messContainCR.addRow(1);
     }
 
