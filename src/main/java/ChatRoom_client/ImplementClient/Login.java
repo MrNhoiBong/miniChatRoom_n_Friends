@@ -17,7 +17,7 @@ public class Login implements InterfaceLogin {
         this.s = s;
     }
 
-    // Getters and Setters
+    // Getters & Setters
     public String getUserName() {
         return userName;
     }
