@@ -1,9 +1,11 @@
 package ChatRoom_client.ImplementClient;
 
+import ChatRoom_client.Interface.InterfaceClient;
+
 import java.net.*;
 
 
-public class Client {
+public class Client implements InterfaceClient {
     private Socket s;
     private String name;
 

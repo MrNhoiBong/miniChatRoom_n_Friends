@@ -1,13 +1,13 @@
 package ChatRoom_client.ImplementClient;
 
+import ChatRoom_client.Interface.InterfaceLogin;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
-import java.util.Scanner;
 
-
-public class Login {
+public class Login implements InterfaceLogin {
     private String userName;
     private String passWord;
     private Socket s;
