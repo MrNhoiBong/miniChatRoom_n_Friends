@@ -1,9 +1,11 @@
 package ChatRoom_client.ImplementClient;
 
+import ChatRoom_client.Interface.InterfaceSendCmd;
+
 import java.io.*;
 import java.net.*;
 
-public class SendCommand {
+public class SendCommand implements InterfaceSendCmd {
     private Socket s;
 
     public SendCommand(Socket s) {
