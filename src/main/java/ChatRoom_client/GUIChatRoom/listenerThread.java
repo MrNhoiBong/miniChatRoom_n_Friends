@@ -2,6 +2,13 @@ package ChatRoom_client.GUIChatRoom;
 
 import ChatRoom_client.RunGUI;
 import javafx.application.Platform;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.control.ScrollBar;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.GridPane;
 
 import java.io.*;
 
@@ -12,6 +19,7 @@ public class listenerThread extends Thread {
                 new InputStreamReader(RunGUI.socket.getInputStream()))) {
             String message;
             while ((message = in.readLine()) != null) {
+                System.out.println(message);
                 String[] messSplit = message.split(":");
                 switch (messSplit[0].toLowerCase()){
                     case "alluser":
@@ -26,6 +34,16 @@ public class listenerThread extends Thread {
                         Platform.runLater(() -> {
                             chatroomWindow.addMess(false, sender_crRq+":"+mess_crRq);
                         });
+
+                        Scene scenecr = ChatroomWindow_control.global_stage.getScene();
+                        for (Node child: ((GridPane) scenecr.lookup("#chatroom_current")).getChildren()){
+                            if (!(child instanceof Label nameTag)){continue;}
+                            if (nameTag.getText().equals(chatroom_crRq)){
+                                nameTag.setStyle("-fx-background-color: red; -fx-text-fill: yellow;");
+                                break;
+                            }
+                        }
+
                         break;
                     case "send":
                         System.out.println(message);
@@ -35,6 +53,15 @@ public class listenerThread extends Thread {
                         Platform.runLater(() ->{
                             chatWindow.addMess(false, mess);
                         });
+
+                        Scene scene = ChatRoomGUI.prim_stage.getScene();
+                        for (Node child: ((GridPane) scene.lookup("#listUser")).getChildren()){
+                            if (!(child instanceof Label nameTag)){continue;}
+                            if (nameTag.getText().equals(sender)){
+                                nameTag.setStyle("-fx-background-color: red; -fx-text-fill: yellow;");
+                                break;
+                            }
+                        }
                         break;
                     case "newlogin", "newlogout":
                         Platform.runLater(() -> {

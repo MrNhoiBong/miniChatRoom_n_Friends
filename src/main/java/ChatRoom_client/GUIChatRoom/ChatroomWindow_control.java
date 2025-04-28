@@ -107,6 +107,7 @@ public class ChatroomWindow_control {
 
     void refreshChatroom(String listChatroom_string){
         ListofRoom.getChildren().clear();
+        System.out.println(listChatroom_string);
         String[] result = listChatroom_string.replace("[", "").replace("]", "").split("\\s*,\\s*");
 
         for (String chatroom : result) {
@@ -188,6 +189,7 @@ public class ChatroomWindow_control {
             messengerContain.getChildren().add(
                     ChatroomMesscontainer_controller.chatroomContain.get(currentChatroom)
             );
+            namecr.setStyle("-fx-background-color: gray; -fx-text-fill: white; -fx-font-weight: bold;");
         });
         return namecr;
     }

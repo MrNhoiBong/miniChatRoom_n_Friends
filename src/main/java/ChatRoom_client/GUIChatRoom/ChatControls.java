@@ -155,6 +155,7 @@ public class ChatControls {
                 mess_place.getChildren().add(name2chat.get(name.getText()));
                 Container_mess_controller.current_chat = name.getText();
                 nameSender.setText(name.getText());
+                name.setStyle("-fx-background-color: #46474b; -fx-text-fill: white;");
             });
 
             if (!RunGUI.name_user.equals(name.getText())) {

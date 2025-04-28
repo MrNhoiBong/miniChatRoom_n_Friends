@@ -59,7 +59,7 @@ public class Subclient_imp extends SubClient {
                         sendSmg.flush();
                         break;
                     default:
-                        System.out.print("Invaild command: ");
+                        System.out.print("Invaild command");
                         break;
                 }
 
