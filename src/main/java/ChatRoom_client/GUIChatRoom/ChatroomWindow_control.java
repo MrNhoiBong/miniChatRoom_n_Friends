@@ -49,6 +49,10 @@ public class ChatroomWindow_control {
     @FXML
     void sendText(KeyEvent event) {
         if (event.getCode() != KeyCode.ENTER){return;}
+        if (currentChatroom == null){
+            messengerGet.setText("");
+            return;
+        }
         ChatroomMesscontainer_controller.chatroom_cons.get(currentChatroom).addMess(true, messengerGet.getText());
         try {
             PrintWriter sendMSG = new PrintWriter(
