@@ -26,7 +26,7 @@ public class ChatroomWindow_control {
     public static FXMLLoader global_loader;
     public static Stage global_stage;
     String username;
-    public static String currentChatroom;
+    public static String currentChatroom = "";
 
     @FXML
     private GridPane ListofRoom;
@@ -49,7 +49,7 @@ public class ChatroomWindow_control {
     @FXML
     void sendText(KeyEvent event) {
         if (event.getCode() != KeyCode.ENTER){return;}
-        if (currentChatroom == null){
+        if (currentChatroom.isEmpty()){
             messengerGet.setText("");
             return;
         }
@@ -130,8 +130,6 @@ public class ChatroomWindow_control {
         this.username = username;
         global_loader = loader;
         global_stage = stage;
-        exists = true;
-
         Socket socket = RunGUI.socket;
         try {
             PrintWriter sendSMG =
@@ -173,6 +171,7 @@ public class ChatroomWindow_control {
             messengerContain.getChildren().add(
                     ChatroomMesscontainer_controller.chatroomContain.get(currentChatroom)
             );
+            namecr.setStyle("-fx-background-color: gray; -fx-text-fill: white; -fx-font-weight: bold;");
         });
         return namecr;
     }

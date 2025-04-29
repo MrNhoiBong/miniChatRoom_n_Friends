@@ -60,6 +60,9 @@ public class LoginControls {
             RunGUI.listenThread.start();
             ((ChatControls) globalLoader.getController()).setUsername(name);
             ((ChatControls) globalLoader.getController()).refresh_function(null);
+            ChatroomWindow_control.exists = true;
+            ((ChatControls) globalLoader.getController()).chatroomSwitch_function(null);
+            ChatroomWindow_control.exists = false;
         }
         else {
             fail_respone.setText("Incorrect user information or unregistered user details entered");

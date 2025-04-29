@@ -18,7 +18,7 @@ import java.util.Iterator;
 public class Container_mess_controller {
     public static HashMap<String, Container_mess_controller> name2controller = new HashMap<>();
     public static HashMap<String, ScrollPane> name2chat = new HashMap<>();
-    public static String current_chat;
+    public static String current_chat = "";
 
     public void setName_n_chat(String[] users){
         java.util.List<String> userList = Arrays.asList(users);

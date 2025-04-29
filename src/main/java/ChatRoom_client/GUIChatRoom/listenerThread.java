@@ -35,6 +35,8 @@ public class listenerThread extends Thread {
                             chatroomWindow.addMess(false, sender_crRq+":"+mess_crRq);
                         });
 
+                        if (ChatroomWindow_control.currentChatroom.equals(chatroom_crRq) || !ChatroomWindow_control.exists){break;}
+
                         Scene scenecr = ChatroomWindow_control.global_stage.getScene();
                         for (Node child: ((GridPane) scenecr.lookup("#chatroom_current")).getChildren()){
                             if (!(child instanceof Label nameTag)){continue;}
@@ -53,6 +55,8 @@ public class listenerThread extends Thread {
                         Platform.runLater(() ->{
                             chatWindow.addMess(false, mess);
                         });
+
+                        if (Container_mess_controller.current_chat.equals(sender)){break;}
 
                         Scene scene = ChatRoomGUI.prim_stage.getScene();
                         for (Node child: ((GridPane) scene.lookup("#listUser")).getChildren()){

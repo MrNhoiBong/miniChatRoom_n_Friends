@@ -198,14 +198,11 @@ public class ChatControls {
 
     @FXML
     void chatroomSwitch_function(MouseEvent event) {
-        if (ChatroomWindow_control.exists){return;}
-
         Stage chatWindow = new Stage();
         FXMLLoader loader = new FXMLLoader(
                 getClass().getClassLoader().getResource("ChatroomWindow.fxml")
         );
         try {
-            System.out.println(getClass().getClassLoader().getResource("ChatroomWindow.fxml"));
             Parent root = loader.load();
 
             ChatroomWindow_control CRcontrol = loader.getController();
@@ -216,7 +213,10 @@ public class ChatControls {
             chatWindow.setOnCloseRequest(e -> {
                 ChatroomWindow_control.exists = false;
             });
+            if (ChatroomWindow_control.exists){return;}
             chatWindow.show();
+            ChatroomWindow_control.exists = true;
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
